@@ -225,7 +225,7 @@ class ViewController: UIViewController {
             self.dischargeNum.alpha = 1.0
         }, completion: nil)
     }
-    //兼別情報を上書き
+    //県別情報を上書き
     func realmPrefecture() {
         let realm = try! Realm()
         let pre = realm.objects(Preference.self).filter("id < 50")

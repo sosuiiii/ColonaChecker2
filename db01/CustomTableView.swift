@@ -112,7 +112,7 @@ class CustomTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         progressView.transform = CGAffineTransform(scaleX: 1.0, y: 10.0)
         progressView.backgroundColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
         progressView.progressTintColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.7)
-        progressView.setProgress(Float(pre![indexPath.row].cases) / Float(highestCase!), animated: false)
+        progressView.setProgress(Float(pre![indexPath.row].cases) / Float(highestCase!), animated: true)
         cell.contentView.addSubview(progressView)
             
         return cell

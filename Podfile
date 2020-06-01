@@ -10,6 +10,7 @@ target 'db01' do
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON'
   pod 'FSCalendar'
-  pod 'CalculateCalendarLogic' 
+  pod 'CalculateCalendarLogic'
+  pod 'Charts'
 
 end

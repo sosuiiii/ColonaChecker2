@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (5.2.1)
   - CalculateCalendarLogic (0.3.0)
+  - Charts (3.5.0):
+    - Charts/Core (= 3.5.0)
+  - Charts/Core (3.5.0)
   - FSCalendar (2.8.1)
   - Realm (5.0.1):
     - Realm/Headers (= 5.0.1)
@@ -12,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - CalculateCalendarLogic
+  - Charts
   - FSCalendar
   - RealmSwift
   - SwiftyJSON
@@ -20,6 +24,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CalculateCalendarLogic
+    - Charts
     - FSCalendar
     - Realm
     - RealmSwift
@@ -28,11 +33,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   CalculateCalendarLogic: cd5b2c706a8628bb924c5ee9d05c4f61bdbaf390
+  Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   Realm: d36cfc336d76d2e15b13651beb6050f49354de4b
   RealmSwift: f29ae0ceaf4fbaf4803c40bbebd838ea2beb903a
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: b51fb0ad9f09d9bc2c4e403765afc51db19dd828
+PODFILE CHECKSUM: 16ac3d830b515ad3f4772581ad3da6abed6da574
 
 COCOAPODS: 1.8.4

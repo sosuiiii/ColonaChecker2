@@ -240,7 +240,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     let realm = try! Realm()
                     try! realm.write{
                         realm.add(countArray)
-//                    }
+                    }
                 })
             }
             

@@ -235,11 +235,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                         })
                         alert.addAction(close)
                         self.present(alert, animated: true, completion: nil)
-//                        UserDefaults.standard.set(self.day, forKey: "todayLaunch")
+                        UserDefaults.standard.set(self.day, forKey: "todayLaunch")
                     }
-//                    let realm = try! Realm()
-//                    try! realm.write{
-//                        realm.add(countArray)
+                    let realm = try! Realm()
+                    try! realm.write{
+                        realm.add(countArray)
 //                    }
                 })
             }
@@ -252,12 +252,12 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         alert.addAction(no)
         present(alert, animated: true, completion: nil)
         
-//        firstSwitch.isEnabled = false
-//        secondSwitch.isEnabled = false
-//        thirdSwitch.isEnabled = false
-//        fourthSwitch.isEnabled = false
-//        fifthSwitch.isEnabled = false
-//        checkButton.isEnabled = false
+        firstSwitch.isEnabled = false
+        secondSwitch.isEnabled = false
+        thirdSwitch.isEnabled = false
+        fourthSwitch.isEnabled = false
+        fifthSwitch.isEnabled = false
+        checkButton.isEnabled = false
         checkButton.setTitle("本日完了", for: .normal)
         
     }

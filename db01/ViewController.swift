@@ -198,21 +198,22 @@ class ViewController: UIViewController {
         dischargeNum.textColor = color
         dischargeNum.alpha = 0.0
         
-        
+        testData()
         numAnimate()
         realmPrefecture()
         realmJapan()
-        
-//        let countArray = Colona()
-//        countArray.high.append("2020-05-20")
-//        countArray.none.append("2020-05-17")
-//        countArray.low.append("2020-05-18")
-//        countArray.middle.append("2020-05-19")
-//        let realms = try! Realm()
-//        try! realms.write{
-//            realms.add(countArray)
-//        }
-        
+
+    }
+    func testData(){
+        let countArray = Colona()
+        countArray.high.append("2020-05-20")
+        countArray.none.append("2020-05-17")
+        countArray.low.append("2020-05-18")
+        countArray.middle.append("2020-05-19")
+        let realms = try! Realm()
+        try! realms.write{
+            realms.add(countArray)
+        }
     }
     func numAnimate() {
         UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
@@ -224,7 +225,7 @@ class ViewController: UIViewController {
             self.dischargeNum.alpha = 1.0
         }, completion: nil)
     }
-    //Prefectureを上書き
+    //兼別情報を上書き
     func realmPrefecture() {
         let realm = try! Realm()
         let pre = realm.objects(Preference.self).filter("id < 50")

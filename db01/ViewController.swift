@@ -160,7 +160,6 @@ class ViewController: UIViewController {
         death.textAlignment = .center
         discharge.text = "退院者数"
         discharge.textColor = uiColor
-        
         pcrNum.layer.borderColor = cgColor
 //        pcrNum.layer.borderWidth = 1
         pcrNum.layer.cornerRadius = 5
@@ -203,6 +202,14 @@ class ViewController: UIViewController {
         realmPrefecture()
         realmJapan()
 
+    }
+    
+    @IBAction func healthButton(_ sender: Any) {
+        performSegue(withIdentifier: "goHealth", sender: nil)
+    }
+    @IBAction func prefectureButton(_ sender: Any) {
+//        performSegue(withIdentifier: "goPrefecture", sender: nil)
+        performSegue(withIdentifier: "goChart", sender: nil)
     }
     func testData(){
         let countArray = Colona()
@@ -285,33 +292,27 @@ class ViewController: UIViewController {
                 }
         })
     }
-    @IBAction func healthButton(_ sender: Any) {
-        performSegue(withIdentifier: "goHealth", sender: nil)
-    }
-    @IBAction func prefectureButton(_ sender: Any) {
-        performSegue(withIdentifier: "goPrefecture", sender: nil)
-    }
     
     //MARK:-日本の感染者数を取得している
-        func getCovidInfo(completion: @escaping ([Prefecture.Obj])->Void){
-            var data:[Prefecture.Obj] = []
-            let decoder = JSONDecoder()
-            // AlamofireでAPIリクエストをする
-            AF.request("https://covid19-japan-web-api.now.sh/api//v1/prefectures")
-                // レスポンスをJSON形式で受け取る
-                .responseJSON { response in
-                    do {
-                        // decode関数の引数にはJSONからマッピングさせたいクラスをと実際のデータを指定する
-                        let result:[Prefecture.Obj] = try decoder.decode([Prefecture.Obj].self, from: response.data!)
+    func getCovidInfo(completion: @escaping ([Prefecture.Obj])->Void){
+        var data:[Prefecture.Obj] = []
+        let decoder = JSONDecoder()
+        // AlamofireでAPIリクエストをする
+        AF.request("https://covid19-japan-web-api.now.sh/api//v1/prefectures")
+            // レスポンスをJSON形式で受け取る
+            .responseJSON { response in
+                do {
+                    // decode関数の引数にはJSONからマッピングさせたいクラスをと実際のデータを指定する
+                    let result:[Prefecture.Obj] = try decoder.decode([Prefecture.Obj].self, from: response.data!)
                         data = result
-                    } catch {
-                        // JSONの形式とクラスのプロパティが異なっている場合には失敗する
-                        print("failed")
-                        print(error.localizedDescription)
-                    }
-                    completion(data)
-            }
+                } catch {
+                    // JSONの形式とクラスのプロパティが異なっている場合には失敗する
+                    print("failed")
+                    print(error.localizedDescription)
+                }
+                completion(data)
         }
+    }
     func getCovidSumInfo(completion: @escaping (Prefecture.Total)->Void){
             var data:Prefecture.Total?
             let decoder = JSONDecoder()

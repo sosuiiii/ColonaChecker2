@@ -27,6 +27,7 @@
 		3DC7FC5324805DA900B6E1CF /* CustomTableViewCellThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7FC5124805DA900B6E1CF /* CustomTableViewCellThird.swift */; };
 		3DC7FC5424805DA900B6E1CF /* CustomTableViewCellThird.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC7FC5224805DA900B6E1CF /* CustomTableViewCellThird.xib */; };
 		3DC7FC562481854800B6E1CF /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7FC552481854800B6E1CF /* CalenderViewController.swift */; };
+		3DC7FC782485489000B6E1CF /* ChartFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */; };
 		3DEA00E1247F9CB2002BFE74 /* Covid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA00E0247F9CB2002BFE74 /* Covid.swift */; };
 		8F8BBD43A7606A61C4E1FA0F /* Pods_db01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4A51D4C54E28B6AA3B7C8B /* Pods_db01.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		3DC7FC5124805DA900B6E1CF /* CustomTableViewCellThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellThird.swift; sourceTree = "<group>"; };
 		3DC7FC5224805DA900B6E1CF /* CustomTableViewCellThird.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCellThird.xib; sourceTree = "<group>"; };
 		3DC7FC552481854800B6E1CF /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartFirstViewController.swift; sourceTree = "<group>"; };
 		3DEA00E0247F9CB2002BFE74 /* Covid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid.swift; sourceTree = "<group>"; };
 		432723C4057F08140880CF5D /* Pods-db01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-db01.debug.xcconfig"; path = "Target Support Files/Pods-db01/Pods-db01.debug.xcconfig"; sourceTree = "<group>"; };
 		BA4A51D4C54E28B6AA3B7C8B /* Pods_db01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_db01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				3D9F8DBB247AD268007A42DE /* CustomTableView.swift */,
 				3D9F8DCF247D8266007A42DE /* SecondViewController.swift */,
 				3D9F8DD1247D826D007A42DE /* ThirdViewController.swift */,
+				3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */,
 				3D9F8DA62476E2D5007A42DE /* Assets.xcassets */,
 				3D9F8DA82476E2D5007A42DE /* LaunchScreen.storyboard */,
 				3D9F8DAB2476E2D5007A42DE /* Info.plist */,
@@ -256,6 +259,7 @@
 			files = (
 				3D9F8DB9247A5EB7007A42DE /* TableCell.swift in Sources */,
 				3D9F8DA22476E2D3007A42DE /* ViewController.swift in Sources */,
+				3DC7FC782485489000B6E1CF /* ChartFirstViewController.swift in Sources */,
 				3D9F8DD0247D8266007A42DE /* SecondViewController.swift in Sources */,
 				3D9F8DC1247AD2F3007A42DE /* CustomTableViewCell.swift in Sources */,
 				3D9F8DD6247D8A6D007A42DE /* PagesViewController.swift in Sources */,

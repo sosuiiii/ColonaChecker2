@@ -259,6 +259,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         fifthSwitch.isEnabled = false
         checkButton.isEnabled = false
         checkButton.setTitle("本日完了", for: .normal)
+        viewDidLoad()
+        viewDidLayoutSubviews()
         
     }
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {

@@ -213,10 +213,10 @@ class ViewController: UIViewController {
     }
     func testData(){
         let countArray = Colona()
-        countArray.high.append("2020-05-20")
-        countArray.none.append("2020-05-17")
-        countArray.low.append("2020-05-18")
-        countArray.middle.append("2020-05-19")
+        countArray.high.append("2020-05-31")
+        countArray.none.append("2020-06-01")
+        countArray.low.append("2020-05-28")
+        countArray.middle.append("2020-05-29")
         let realms = try! Realm()
         try! realms.write{
             realms.add(countArray)

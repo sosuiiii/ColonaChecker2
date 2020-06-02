@@ -30,15 +30,26 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
     override func viewDidLayoutSubviews() {
         let width = view.frame.size.width
         let height = view.frame.size.height
-        
-        segmentList.frame = CGRect(x: 10, y: 105, width: width - 20, height: 20)
+        var segmentListHeight:CGFloat = 0
+        var segmentDataHeight:CGFloat = 0
+        if height == 667 {
+            segmentListHeight = 33
+            segmentDataHeight = 38
+        } else if height == 736 {
+            segmentListHeight = 26
+            segmentDataHeight = 30
+        } else if height == 896 {
+            segmentListHeight -= 10
+            segmentDataHeight -= 10
+        }
+        segmentList.frame = CGRect(x: 10, y: 105 - segmentListHeight, width: width - 20, height: 20)
         segmentList.setTitle("都道府県別", forSegmentAt: 0)
         segmentList.setTitle("昇順", forSegmentAt: 1)
         segmentList.setTitle("降順", forSegmentAt: 2)
         segmentList.selectedSegmentTintColor = .init(red: 40/255, green: 72/255, blue: 104/255, alpha: 1)
         segmentList.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         segmentList.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.init(red: 0/255, green: 32/255, blue: 64/255, alpha: 1)], for: .normal)
-        segmentData.frame = CGRect(x: 10, y: 135, width: width - 20, height: 20)
+        segmentData.frame = CGRect(x: 10, y: 135 - segmentDataHeight, width: width - 20, height: 20)
         segmentData.setTitle("感染者数", forSegmentAt: 0)
         segmentData.setTitle("PCR検査人数", forSegmentAt: 1)
         segmentData.setTitle("死者数", forSegmentAt: 2)
@@ -48,10 +59,25 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         
         let leftFix:CGFloat = 120
         let rightFix:CGFloat = 30
-        name.frame = CGRect(x: width / 2 - leftFix, y: height - 170, width: 200, height: 40)
-        cases.frame = CGRect(x: width / 2 + rightFix, y: height - 170, width: 200, height: 40)
-        deaths.frame = CGRect(x: width / 2 - leftFix, y: height - 120, width: 200, height: 40)
-        pcr.frame = CGRect(x: width / 2 + rightFix, y: height - 120, width: 200, height: 40)
+        var labelHeight:CGFloat = 0
+        var labelHeightBottom:CGFloat = 0
+        if height == 667 {
+            labelHeight = 100
+            labelHeightBottom = 70
+        } else if height == 736 {
+            labelHeight = 70
+            labelHeightBottom = 60
+        } else if height == 812 {
+            labelHeight = 50
+            labelHeightBottom = 40
+        } else if height == 896 {
+            labelHeight = 10
+            labelHeightBottom = 10
+        }
+        name.frame = CGRect(x: width / 2 - leftFix, y: height - 170 + labelHeight, width: 200, height: 40)
+        cases.frame = CGRect(x: width / 2 + rightFix, y: height - 170 + labelHeight, width: 200, height: 40)
+        deaths.frame = CGRect(x: width / 2 - leftFix, y: height - 120 + labelHeightBottom, width: 200, height: 40)
+        pcr.frame = CGRect(x: width / 2 + rightFix, y: height - 120 + labelHeightBottom, width: 200, height: 40)
         name.textAlignment = .left
         cases.textAlignment = .left
         deaths.textAlignment = .left
@@ -78,9 +104,15 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         deaths.text = "死者数 "
         deaths.textColor = .white
         deaths.font = .systemFont(ofSize: 17, weight: .ultraLight)
-        var chartFixHeight = 0
-        if view.frame.size.height == 
-        let chartView = HorizontalBarChartView(frame: .init(x: 0, y: 180, width: size.width, height: 520))
+        var chartFixHeight:CGFloat = 0
+        if view.frame.size.height == 667 {
+            chartFixHeight = 45
+        } else if view.frame.size.height == 736 {
+            chartFixHeight = 30
+        } else if view.frame.size.height == 896 {
+            chartFixHeight -= 20
+        }
+        let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 180 - chartFixHeight, width: size.width, height: (520 - chartFixHeight )))
         chartView.legend.textColor = .white
         chartView.animate(yAxisDuration: 1.0, easingOption: .easeOutCirc)
         chartView.xAxis.labelCount = 47
@@ -148,7 +180,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         view.addSubview(chartView)
         //グラデーション
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 170, width: size.width, height: view.frame.size.height - 170)
+        gradientLayer.frame = CGRect(x: 0, y: 170 - chartFixHeight, width: size.width, height: view.frame.size.height - 100)
         gradientLayer.colors = [UIColor(red: 40/255, green: 72/255, blue: 104/255, alpha: 1).cgColor,
                                     UIColor(red: 10/255, green: 42/255, blue: 74/255, alpha: 1).cgColor]
         gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
@@ -191,7 +223,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] {
            let sliceIndex: Int = dataSet.entryIndex(entry: entry)
             name.text! = "場所 : \(pre![sliceIndex].name)"
-            cases.text! = "感染者数 : \(pre![sliceIndex].cases)"
+            cases.text! = "感染数 : \(pre![sliceIndex].cases)"
             pcr.text! = "PCR数 : \(pre![sliceIndex].pcr)"
             deaths.text! = "死者数 : \(pre![sliceIndex].deaths)"
             

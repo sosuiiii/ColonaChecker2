@@ -38,6 +38,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var fourthSwitch: UISwitch!
     @IBOutlet weak var fifthSwitch: UISwitch!
     
+    var checkLabel = "診断完了"
     //今日の日付を受け取る
     var day = ""
     //感染危険度を数値化する為の変数
@@ -120,7 +121,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
 //        checkButton.layer.borderWidth = 2
         checkButton.layer.cornerRadius = 5
         checkButton.tintColor = .white
-        checkButton.setTitle("診断完了", for: .normal)
+        checkButton.setTitle(checkLabel, for: .normal)
         checkButton.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.6)
         
         firstSwitch.isOn = false
@@ -250,17 +251,17 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         })
         alert.addAction(yes)
         alert.addAction(no)
-        present(alert, animated: true, completion: nil)
-        
+        present(alert, animated: true, completion: {
+        })
+        checkButton.setTitle("本日終了", for: .normal)
         firstSwitch.isEnabled = false
         secondSwitch.isEnabled = false
         thirdSwitch.isEnabled = false
         fourthSwitch.isEnabled = false
         fifthSwitch.isEnabled = false
         checkButton.isEnabled = false
-        checkButton.setTitle("本日完了", for: .normal)
-        viewDidLoad()
-        viewDidLayoutSubviews()
+        
+        
         
     }
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {

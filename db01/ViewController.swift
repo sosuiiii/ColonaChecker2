@@ -249,7 +249,6 @@ class ViewController: UIViewController{
     func realmPrefecture() {
         let realm = try! Realm()
         let pre = realm.objects(Preference.self).filter("id < 50")
-        
         if !pre.isEmpty {
             try! realm.write() {
                 realm.delete(pre)

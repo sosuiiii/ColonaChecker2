@@ -132,14 +132,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
         calendarView.appearance.headerTitleColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
         calendarView.appearance.weekdayTextColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
-        //今日の日付をdayに代入
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y-M-d", options: 0, locale: Locale(identifier: "ja_JP"))
-        let today = String(dateFormatter.string(from: date)).replacingOccurrences(of: "/", with: "-")
-        let trans = today.components(separatedBy: "-")
-        day = "\(trans[0])-\(NSString(format: "%02d",Int(trans[1])!))-\(NSString(format: "%02d",Int(trans[2])!))"
         
+        //今日の日付をdayに代入
+        today()
+
+        //診断をすでにしている場合、switchをunenableにする
         if UserDefaults.standard.string(forKey: "todayLaunch") ?? "0" == day {
             firstSwitch.isEnabled = false
             secondSwitch.isEnabled = false
@@ -159,8 +156,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             checkCount -= 2
         }
-        print(checkCount)
-        
     }
     @IBAction func secondSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
@@ -168,7 +163,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             checkCount -= 2
         }
-        print(checkCount)
     }
     @IBAction func thirdSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
@@ -176,7 +170,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             checkCount -= 1
         }
-        print(checkCount)
     }
     @IBAction func fourthSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
@@ -184,7 +177,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             checkCount -= 1
         }
-        print(checkCount)
     }
     @IBAction func fifthSwitchAction(_ sender: UISwitch) {
         if sender.isOn {
@@ -192,7 +184,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             checkCount -= 2
         }
-        print(checkCount)
     }
     @IBAction func checkButtonAction(_ sender: Any) {
         let alert = UIAlertController(title: "診断を完了しますか？", message: "診断は１日に1回までです", preferredStyle: .actionSheet)
@@ -277,6 +268,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 0.5
     }
+    //診断結果をカレンダーに表示する
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         let realm = try! Realm()
         let colona = realm.objects(Colona.self)
@@ -295,9 +287,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
             }
         }
         return str
-    }
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
         return .init(red: 0, green: 0, blue: 0, alpha: 0.7)
@@ -350,5 +339,14 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
 
         return .black
+    }
+    func today() {
+        //今日の日付をdayに代入
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y-M-d", options: 0, locale: Locale(identifier: "ja_JP"))
+        let today = String(dateFormatter.string(from: date)).replacingOccurrences(of: "/", with: "-")
+        let trans = today.components(separatedBy: "-")
+        day = "\(trans[0])-\(NSString(format: "%02d",Int(trans[1])!))-\(NSString(format: "%02d",Int(trans[2])!))"
     }
 }

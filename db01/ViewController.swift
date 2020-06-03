@@ -10,8 +10,9 @@
 import UIKit
 import RealmSwift
 import Alamofire
+import KRProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var containLabel: UIView!
@@ -205,11 +206,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func healthButton(_ sender: Any) {
-        performSegue(withIdentifier: "goHealth", sender: nil)
+        KRProgressHUD.show(withMessage: "Loading...", completion: {
+            self.performSegue(withIdentifier: "goHealth", sender: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                KRProgressHUD.dismiss({
+                })
+            }
+        })
     }
     @IBAction func prefectureButton(_ sender: Any) {
-//        performSegue(withIdentifier: "goPrefecture", sender: nil)
-        performSegue(withIdentifier: "goChart", sender: nil)
+//        KRProgressHUD.show(withMessage: "Loading...", completion: {
+            self.performSegue(withIdentifier: "goChart", sender: nil)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+//                KRProgressHUD.dismiss({
+//                })
+//            }
+//        })
+        
     }
     func testData(){
         let countArray = Colona()
@@ -334,8 +347,5 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
-
-    
-
 }
 

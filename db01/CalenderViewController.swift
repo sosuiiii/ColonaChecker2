@@ -345,11 +345,10 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let weekday = self.getWeekIdx(date)
         if weekday == 1 {   //日曜日
             return .init(red: 150/255, green: 30/255, blue: 0/255, alpha: 0.9)
-        }
-        else if weekday == 7 {  //土曜日
+        } else if weekday == 7 {  //土曜日
             return .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
         }
 
-        return nil
+        return .black
     }
 }

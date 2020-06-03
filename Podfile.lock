@@ -5,6 +5,9 @@ PODS:
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
   - FSCalendar (2.8.1)
+  - KRActivityIndicatorView (3.0.5)
+  - KRProgressHUD (3.4.5):
+    - KRActivityIndicatorView (= 3.0.5)
   - Realm (5.0.1):
     - Realm/Headers (= 5.0.1)
   - Realm/Headers (5.0.1)
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - CalculateCalendarLogic
   - Charts
   - FSCalendar
+  - KRProgressHUD
   - RealmSwift
   - SwiftyJSON
 
@@ -26,6 +30,8 @@ SPEC REPOS:
     - CalculateCalendarLogic
     - Charts
     - FSCalendar
+    - KRActivityIndicatorView
+    - KRProgressHUD
     - Realm
     - RealmSwift
     - SwiftyJSON
@@ -35,10 +41,12 @@ SPEC CHECKSUMS:
   CalculateCalendarLogic: cd5b2c706a8628bb924c5ee9d05c4f61bdbaf390
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  KRActivityIndicatorView: 912bc0413d98340f384b12a4e1e6aa8f42fb377d
+  KRProgressHUD: df4cdc3a1baf708d4276a089ee34d133fa9a6f3e
   Realm: d36cfc336d76d2e15b13651beb6050f49354de4b
   RealmSwift: f29ae0ceaf4fbaf4803c40bbebd838ea2beb903a
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 16ac3d830b515ad3f4772581ad3da6abed6da574
+PODFILE CHECKSUM: c875e97c522cfc935efe55be30b4c79ac6c54878
 
 COCOAPODS: 1.8.4

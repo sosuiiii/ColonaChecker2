@@ -218,7 +218,6 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             viewDidLoad()
         }
     }
-    
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] {
            let sliceIndex: Int = dataSet.entryIndex(entry: entry)

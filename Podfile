@@ -12,5 +12,6 @@ target 'db01' do
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
   pod 'Charts'
+  pod 'KRProgressHUD'
 
 end

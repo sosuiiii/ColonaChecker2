@@ -10,8 +10,9 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
+import KRProgressHUD
 
-class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance{
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var calendarView: FSCalendar!
@@ -133,10 +134,16 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendarView.appearance.headerTitleColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
         calendarView.appearance.weekdayTextColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
         
-        //今日の日付をdayに代入
+        //診断をしていた場合、チェックボタンを無効にする
+        LaunchCheck()
+        //今日の日付を変数dayに代入
         today()
-
-        //診断をすでにしている場合、switchをunenableにする
+        
+        KRProgressHUD.dismiss()
+        
+    }
+    
+    func LaunchCheck() {
         if UserDefaults.standard.string(forKey: "todayLaunch") ?? "0" == day {
             firstSwitch.isEnabled = false
             secondSwitch.isEnabled = false
@@ -148,7 +155,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         } else {
             UserDefaults.standard.removeObject(forKey: "todayLaunch")
         }
-        
     }
     @IBAction func firstSwitchAction(_ sender: UISwitch) {
         if sender.isOn {

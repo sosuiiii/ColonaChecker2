@@ -208,10 +208,9 @@ class ViewController: UIViewController{
     @IBAction func healthButton(_ sender: Any) {
         KRProgressHUD.show(withMessage: "Loading...", completion: {
             self.performSegue(withIdentifier: "goHealth", sender: nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-                KRProgressHUD.dismiss({
-                })
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+//                KRProgressHUD.dismiss()
+//            }
         })
     }
     @IBAction func prefectureButton(_ sender: Any) {
@@ -222,7 +221,6 @@ class ViewController: UIViewController{
 //                })
 //            }
 //        })
-        
     }
     func testData(){
         let countArray = Colona()

@@ -160,7 +160,7 @@
                         <outlet property="severe" destination="b81-yZ-bzw" id="YvU-iS-Hyv"/>
                         <outlet property="severeNum" destination="jMm-P2-PE6" id="tTB-mh-hSG"/>
                         <outlet property="titleLabel" destination="jxF-8H-Cdb" id="GXd-wi-7yY"/>
-                        <segue destination="g7j-Xd-C33" kind="show" identifier="goHealth" id="xfo-fM-M8w"/>
+                        <segue destination="g7j-Xd-C33" kind="presentation" identifier="goHealth" id="xfo-fM-M8w"/>
                         <segue destination="LFv-mF-VX2" kind="show" identifier="goPrefecture" id="RCf-ia-7Yn"/>
                         <segue destination="l7j-Ae-aVn" kind="show" identifier="goChart" id="tEw-AC-BrW"/>
                     </connections>
@@ -490,11 +490,11 @@
             <objects>
                 <viewController id="g7j-Xd-C33" customClass="CalenderViewController" customModule="db01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wcj-8F-9QQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oza-xB-CfT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="878"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="912"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0r-mH-sFx">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="878"/>
@@ -683,7 +683,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="UbU-0O-1bb"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOA-da-gi4">
-                                <rect key="frame" x="0.0" y="966" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="912" width="414" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="OpF-yT-X2L"/>

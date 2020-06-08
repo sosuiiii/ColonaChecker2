@@ -77,7 +77,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
         view.backgroundColor = .lightGray
         bottomView.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.5)
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 12
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         contentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         contentView.layer.shadowColor = UIColor.black.cgColor

@@ -116,7 +116,7 @@ class ViewController: UIViewController{
         view.addSubview(backButton)
         
         let imageView = UIImageView()
-        let image = UIImage(named: "virus")
+        let image = UIImage(named: "virus2")
         imageView.image = image
         imageView.frame = CGRect(x: view.frame.size.width + 0, y: 100, width: 50, height: 50)
         imageView.layer.accessibilityRespondsToUserInteraction = false
@@ -148,20 +148,11 @@ class ViewController: UIViewController{
         containLabel.layer.shadowRadius = 4
         containLabel.backgroundColor = .white
         
-//        navigationController?.navigationBar.barTintColor = colors.blue
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        title = "コロナチェッカー"
-        
-//      healthButton.layer.borderColor = UIColor.white.cgColor
         healthButton.layer.backgroundColor = colors.white.cgColor
-//        healthButton.layer.borderWidth = 1
         healthButton.layer.cornerRadius = 5
         healthButton.tintColor = color
         healthButton.setTitle("健 康 管 理", for: .normal)
-//        infoButton.layer.borderColor = cgColor
         infoButton.layer.backgroundColor = colors.white.cgColor
-//        infoButton.layer.borderWidth = 1
         infoButton.layer.cornerRadius = 5
         infoButton.frame.size.width = 200
         infoButton.tintColor = color
@@ -170,13 +161,9 @@ class ViewController: UIViewController{
         let uiColor:UIColor = colors.black
         titleLabel.text = "Covid in Japan"
         titleLabel.textColor = colors.white
-//        titleLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
-//        titleLabel.layer.shadowOpacity = 0.5
-//        titleLabel.layer.shadowRadius = 5
         
         pcr.text = "PCR数"
         pcr.textColor = uiColor
-//        pcr.textAlignment = .center
         positive.text = "感染者数"
         positive.textColor = uiColor
         hospitalize.text = "入院者数"
@@ -185,45 +172,15 @@ class ViewController: UIViewController{
         severe.textColor = uiColor
         death.text = "死者数"
         death.textColor = uiColor
-//        death.textAlignment = .center
         discharge.text = "退院者数"
         discharge.textColor = uiColor
-        pcrNum.layer.borderColor = cgColor
-//        pcrNum.layer.borderWidth = 1
-        pcrNum.layer.cornerRadius = 5
-        pcrNum.textColor = color
-//        pcrNum.textAlignment = .center
-        pcrNum.alpha = 0.0
-        positiveNum.layer.borderColor = cgColor
-//        positiveNum.layer.borderWidth = 1
-        positiveNum.layer.cornerRadius = 5
-//        positiveNum.textAlignment = .center
-        positiveNum.textColor = color
-        positiveNum.alpha = 0.0
-        hospitalizeNum.layer.borderColor = cgColor
-//        hospitalizeNum.layer.borderWidth = 1
-        hospitalizeNum.layer.cornerRadius = 5
-//        hospitalizeNum.textAlignment = .center
-        hospitalizeNum.textColor = color
-        hospitalizeNum.alpha = 0.0
-        severeNum.layer.borderColor = cgColor
-//        severeNum.layer.borderWidth = 1
-        severeNum.layer.cornerRadius = 5
-//        severeNum.textAlignment = .center
-        severeNum.textColor = color
-        severeNum.alpha = 0.0
-        deathNum.layer.borderColor = cgColor
-//        deathNum.layer.borderWidth = 1
-        deathNum.layer.cornerRadius = 5
-//        deathNum.textAlignment = .center
-        deathNum.textColor = color
-        deathNum.alpha = 0.0
-        dischargeNum.layer.borderColor = cgColor
-//        dischargeNum.layer.borderWidth = 1
-        dischargeNum.layer.cornerRadius = 5
-//        dischargeNum.textAlignment = .center
-        dischargeNum.textColor = color
-        dischargeNum.alpha = 0.0
+        
+        labelNum(pcrNum, color: color, cgColor: cgColor)
+        labelNum(positiveNum, color: color, cgColor: cgColor)
+        labelNum(hospitalizeNum, color: color, cgColor: cgColor)
+        labelNum(severeNum, color: color, cgColor: cgColor)
+        labelNum(deathNum, color: color, cgColor: cgColor)
+        labelNum(dischargeNum, color: color, cgColor: cgColor)
         
         testData()
         numAnimate()
@@ -236,19 +193,10 @@ class ViewController: UIViewController{
         KRProgressHUD.appearance().activityIndicatorColors = .init(arrayLiteral: colors.blue)
         KRProgressHUD.show(withMessage: "Loading...", completion: {
             self.performSegue(withIdentifier: "goHealth", sender: nil)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-//                KRProgressHUD.dismiss()
-//            }
         })
     }
     @IBAction func prefectureButton(_ sender: Any) {
-//        KRProgressHUD.show(withMessage: "Loading...", completion: {
             self.performSegue(withIdentifier: "goChart", sender: nil)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-//                KRProgressHUD.dismiss({
-//                })
-//            }
-//        })
     }
     @objc func backButtonAction() {
         viewDidLoad()
@@ -301,6 +249,12 @@ class ViewController: UIViewController{
             }
         })
     }
+    func labelNum(_ num: UILabel, color: UIColor, cgColor: CGColor) {
+        num.layer.borderColor = cgColor
+        num.layer.cornerRadius = 5
+        num.textColor = color
+        num.alpha = 0.0
+    }
     //日本全体情報を上書き
     func realmJapan() {
         let realmSum = try! Realm()
@@ -339,16 +293,12 @@ class ViewController: UIViewController{
     func getCovidInfo(completion: @escaping ([Prefecture.Obj])->Void){
         var data:[Prefecture.Obj] = []
         let decoder = JSONDecoder()
-        // AlamofireでAPIリクエストをする
         AF.request("https://covid19-japan-web-api.now.sh/api//v1/prefectures")
-            // レスポンスをJSON形式で受け取る
             .responseJSON { response in
                 do {
-                    // decode関数の引数にはJSONからマッピングさせたいクラスをと実際のデータを指定する
                     let result:[Prefecture.Obj] = try decoder.decode([Prefecture.Obj].self, from: response.data!)
                         data = result
                 } catch {
-                    // JSONの形式とクラスのプロパティが異なっている場合には失敗する
                     print("failed")
                     print(error.localizedDescription)
                 }
@@ -358,16 +308,12 @@ class ViewController: UIViewController{
     func getCovidSumInfo(completion: @escaping (Prefecture.Total)->Void){
             var data:Prefecture.Total?
             let decoder = JSONDecoder()
-            // AlamofireでAPIリクエストをする
             AF.request("https://covid19-japan-web-api.now.sh/api//v1/total")
-                // レスポンスをJSON形式で受け取る
                 .responseJSON { response in
                     do {
-                        // decode関数の引数にはJSONからマッピングさせたいクラスをと実際のデータを指定する
                         let result:Prefecture.Total = try decoder.decode(Prefecture.Total.self, from: response.data!)
                         data = result
                     } catch {
-                        // JSONの形式とクラスのプロパティ、型が異なっている場合には失敗する
                         print("failed:\(error.localizedDescription)")
                     }
                     completion(data!)

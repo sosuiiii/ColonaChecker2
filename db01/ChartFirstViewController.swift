@@ -43,10 +43,6 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             segmentListHeight -= 10
             segmentDataHeight -= 10
         }
-//        let topView = UIView()
-//        topView.frame = CGRect(x: 0, y: 0, width: width, height: 64)
-//        topView.backgroundColor = colors.bluePurple
-//        view.addSubview(topView)
         
         let backButton = UIButton(type: .system)
         backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
@@ -61,7 +57,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         nextButton.setTitle("円グラフ", for: .normal)
         nextButton.setTitleColor(colors.white, for: .normal)
         nextButton.titleLabel?.font = .systemFont(ofSize: 20)
-        nextButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(goCircle), for: .touchUpInside)
         view.addSubview(nextButton)
         
         segmentList.frame = CGRect(x: 10, y: 105 - segmentListHeight, width: width - 20, height: 20)
@@ -155,10 +151,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         chartView.rightAxis.labelTextColor = colors.bluePurple
         chartView.delegate = self
         chartView.xAxis.drawGridLinesEnabled = false
-//        chartView.leftAxis.drawGridLinesEnabled = false
-//        chartView.rightAxis.drawGridLinesEnabled = false
             
-        
         let realm = try! Realm()
         let pref = realm.objects(Preference.self)
         
@@ -212,14 +205,6 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         set.drawIconsEnabled = true
         chartView.data = BarChartData(dataSet: set)
         view.addSubview(chartView)
-        //グラデーション
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = CGRect(x: 0, y: 170 - chartFixHeight, width: size.width, height: view.frame.size.height)
-//        gradientLayer.colors = [colors.bluePurple.cgColor,
-//                                colors.blue.cgColor]
-//        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint.init(x: 0.5, y:1)
-//        view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     @IBAction func segmentListAction(_ sender: UISegmentedControl) {
@@ -255,6 +240,9 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
     @objc func backButtonAction(){
         dismiss(animated: true, completion: nil)
     }
+    @objc func goCircle(){
+        performSegue(withIdentifier: "goCircle", sender: nil)
+    }
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] {
            let sliceIndex: Int = dataSet.entryIndex(entry: entry)
@@ -269,16 +257,12 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
     func getCovidInfo(completion: @escaping ([Prefecture.Obj])->Void){
         var data:[Prefecture.Obj] = []
         let decoder = JSONDecoder()
-        // AlamofireでAPIリクエストをする
         AF.request("https://covid19-japan-web-api.now.sh/api//v1/prefectures")
-            // レスポンスをJSON形式で受け取る
             .responseJSON { response in
                 do {
-                    // decode関数の引数にはJSONからマッピングさせたいクラスをと実際のデータを指定する
                     let result:[Prefecture.Obj] = try decoder.decode([Prefecture.Obj].self, from: response.data!)
                         data = result
                 } catch {
-                    // JSONの形式とクラスのプロパティが異なっている場合には失敗する
                     print("failed")
                     print(error.localizedDescription)
                 }

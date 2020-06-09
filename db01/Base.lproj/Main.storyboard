@@ -728,10 +728,26 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="1485.9375"/>
         </scene>
+        <!--Circle View Controller-->
+        <scene sceneID="FH4-bV-N1e">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="MJI-D6-bnE" customClass="CircleViewController" customModule="db01" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2fH-CY-Jyf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1ac-x9-dGf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="G5b-9j-xR7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c92-Gb-AW0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-906" y="793"/>
+        </scene>
         <!--Chart First View Controller-->
         <scene sceneID="OIg-qo-NzL">
             <objects>
-                <viewController storyboardIdentifier="chartView" modalPresentationStyle="fullScreen" id="l7j-Ae-aVn" customClass="ChartFirstViewController" customModule="db01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chartView" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="l7j-Ae-aVn" customClass="ChartFirstViewController" customModule="db01" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bPP-Rm-c08">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -801,6 +817,7 @@
                         <outlet property="segmentData" destination="fnA-I6-z7d" id="ay2-c3-DpB"/>
                         <outlet property="segmentList" destination="VJD-ov-dmZ" id="aq8-lh-dNG"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goTop" id="RRP-Mb-8LB"/>
+                        <segue destination="MJI-D6-bnE" kind="show" identifier="goCircle" id="YFp-to-emT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3N-0k-4lo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

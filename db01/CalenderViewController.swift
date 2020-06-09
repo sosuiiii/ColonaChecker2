@@ -58,11 +58,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         checkView.frame = CGRect(x: view.frame.size.width / 2 - 100 , y: 800, width: 200, height: 40)
         checkButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         checkButton.titleLabel?.font = .systemFont(ofSize: 20)
-        firstLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
-        secondLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
-        thirdLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
-        fourthLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
-        fifthLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
+        firstLabel.frame = CGRect(x: 60, y: 15, width: 200, height: 40)
+        secondLabel.frame = CGRect(x: 60, y: 15, width: 200, height: 40)
+        thirdLabel.frame = CGRect(x: 60, y: 15, width: 200, height: 40)
+        fourthLabel.frame = CGRect(x: 60, y: 15, width: 200, height: 40)
+        fifthLabel.frame = CGRect(x: 60, y: 15, width: 200, height: 40)
         
     }
     override func viewDidLoad() {
@@ -80,7 +80,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let color:UIColor = colors.white
         
         view.backgroundColor = .lightGray
-//        bottomView.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.5)
         contentView.layer.cornerRadius = 12
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         contentView.layer.shadowOffset = CGSize(width: 0, height: 10)
@@ -95,6 +94,11 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         uiViewStatus(thirdView, radius)
         uiViewStatus(fourthView, radius)
         uiViewStatus(fifthView, radius)
+        firstView.addSubview(imageSet(name: "check1"))
+        secondView.addSubview(imageSet(name: "check2"))
+        thirdView.addSubview(imageSet(name: "check3"))
+        fourthView.addSubview(imageSet(name: "check4"))
+        fifthView.addSubview(imageSet(name: "check5"))
         
         firstLabel.text = "37.5度以上の熱がある"
         secondLabel.text = "のどの痛みがある"
@@ -102,8 +106,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         fourthLabel.text = "味が薄く感じる"
         fifthLabel.text = "だるさがある"
         
-//        checkButton.layer.borderColor = .init(srgbRed: 0/255, green: 30/255, blue: 150/255, alpha: 0.7)
-//        checkButton.layer.borderWidth = 2
         checkButton.layer.cornerRadius = 5
         checkButton.tintColor = colors.white
         checkButton.setTitle(checkLabel, for: .normal)
@@ -356,5 +358,13 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.cornerRadius = radius
+    }
+    func imageSet(name: String) -> UIImageView{
+        let imageView = UIImageView()
+        let image = UIImage(named: name)
+        imageView.image = image
+        imageView.frame = CGRect(x: 10, y: 12, width: 40, height: 40)
+        imageView.layer.accessibilityRespondsToUserInteraction = false
+        return imageView
     }
 }

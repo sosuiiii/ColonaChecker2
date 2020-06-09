@@ -37,7 +37,7 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         let width = view.frame.size.width
-        let height = view.frame.size.height
+//        let height = view.frame.size.height
         
         segmentControl.selectedSegmentIndex = segment
         view.backgroundColor = colors.white
@@ -66,11 +66,7 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.placeholder = "都道府県を入力してください"
         searchBar.showsCancelButton = true
-//        searchBar.barTintColor = colors.blueGreen
         searchBar.tintColor = colors.blue
-//        searchBar.backgroundColor = .yellow・
-//        let searchView = searchBar.value(forKey: "background") as! UIImageView
-//        searchView.removeFromSuperview()
         
         let uiView = UIView()
         uiView.frame = CGRect(x: 10, y: 480, width: view.frame.size.width - 20, height: 167)
@@ -149,17 +145,14 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
             segment = 0
             loadView()
             viewDidLoad()
-//            viewDidLayoutSubviews()
         } else if sender.selectedSegmentIndex == 1 {
             segment = 1
             loadView()
             viewDidLoad()
-//            viewDidLayoutSubviews()
         } else {
             segment = 2
             loadView()
             viewDidLoad()
-//            viewDidLayoutSubviews()
         }
     }
     func searchBarSearchButtonClicked(_ searchBar:UISearchBar) {

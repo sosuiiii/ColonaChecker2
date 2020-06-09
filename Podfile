@@ -13,5 +13,10 @@ target 'db01' do
   pod 'CalculateCalendarLogic'
   pod 'Charts'
   pod 'KRProgressHUD'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end

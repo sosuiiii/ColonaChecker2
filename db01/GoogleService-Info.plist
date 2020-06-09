@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>806221538149-8pq0l1h3outrpos8bdqnarqk5uhpe677.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.806221538149-8pq0l1h3outrpos8bdqnarqk5uhpe677</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDytqHKQGu9HSgYmCuxl_z6nE0Os5cbOuI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>806221538149</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>wntsssbbsnws-yahoo.co.jp.db01</string>
+	<key>PROJECT_ID</key>
+	<string>clonachecker2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>clonachecker2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:806221538149:ios:930965a5553b9ae314b78c</string>
+	<key>DATABASE_URL</key>
+	<string>https://clonachecker2.firebaseio.com</string>
+</dict>
+</plist>

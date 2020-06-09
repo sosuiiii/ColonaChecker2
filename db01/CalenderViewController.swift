@@ -26,6 +26,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var fourthView: UIView!
     @IBOutlet weak var fifthView: UIView!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkView: UIView!
+    
     
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
@@ -49,16 +51,18 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+    let colors = Colors()
     
     override func viewDidLayoutSubviews() {
         
-        checkButton.frame = CGRect(x: view.frame.size.width / 2 - 100, y: 800, width: 200, height: 40)
+        checkView.frame = CGRect(x: view.frame.size.width / 2 - 100 , y: 800, width: 200, height: 40)
+        checkButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         checkButton.titleLabel?.font = .systemFont(ofSize: 20)
-        firstLabel.frame = CGRect(x: 20, y: 15, width: 200, height: 40)
-        secondLabel.frame = CGRect(x: 20, y: 15, width: 200, height: 40)
-        thirdLabel.frame = CGRect(x: 20, y: 15, width: 200, height: 40)
-        fourthLabel.frame = CGRect(x: 20, y: 15, width: 200, height: 40)
-        fifthLabel.frame = CGRect(x: 20, y: 15, width: 200, height: 40)
+        firstLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
+        secondLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
+        thirdLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
+        fourthLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
+        fifthLabel.frame = CGRect(x: 50, y: 15, width: 200, height: 40)
         
     }
     override func viewDidLoad() {
@@ -70,13 +74,13 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
         titleLabel.text = "健康チェック"
         titleLabel.textAlignment = .center
-        titleLabel.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.6)
+        titleLabel.backgroundColor = colors.blue
         titleLabel.textColor = .white
         
-        let color:UIColor = .init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        let color:UIColor = colors.white
         
         view.backgroundColor = .lightGray
-        bottomView.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.5)
+//        bottomView.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.5)
         contentView.layer.cornerRadius = 12
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         contentView.layer.shadowOffset = CGSize(width: 0, height: 10)
@@ -86,44 +90,30 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         contentView.backgroundColor = color
         
         let radius:CGFloat = 20
-        firstView.layer.shadowRadius = 4
-        firstView.layer.shadowOpacity = 0.3
-        firstView.layer.shadowColor = UIColor.black.cgColor
-        firstView.layer.shadowOffset = CGSize(width: 4, height: 2)
-        firstView.layer.cornerRadius = radius
-        secondView.layer.shadowRadius = 4
-        secondView.layer.shadowOpacity = 0.3
-        secondView.layer.shadowColor = UIColor.black.cgColor
-        secondView.layer.shadowOffset = CGSize(width: 4, height: 2)
-        secondView.layer.cornerRadius = radius
-        thirdView.layer.shadowRadius = 4
-        thirdView.layer.shadowOpacity = 0.3
-        thirdView.layer.shadowColor = UIColor.black.cgColor
-        thirdView.layer.shadowOffset = CGSize(width: 4, height: 2)
-        thirdView.layer.cornerRadius = radius
-        fourthView.layer.shadowRadius = 4
-        fourthView.layer.shadowOpacity = 0.3
-        fourthView.layer.shadowColor = UIColor.black.cgColor
-        fourthView.layer.shadowOffset = CGSize(width: 4, height: 2)
-        fourthView.layer.cornerRadius = radius
-        fifthView.layer.shadowRadius = 4
-        fifthView.layer.shadowOpacity = 0.3
-        fifthView.layer.shadowColor = UIColor.black.cgColor
-        fifthView.layer.shadowOffset = CGSize(width: 4, height: 2)
-        fifthView.layer.cornerRadius = radius
+        uiViewStatus(firstView, radius)
+        uiViewStatus(secondView, radius)
+        uiViewStatus(thirdView, radius)
+        uiViewStatus(fourthView, radius)
+        uiViewStatus(fifthView, radius)
         
-        firstLabel.text = "1・37.5度以上の熱がある"
-        secondLabel.text = "2・のどの痛みがある"
-        thirdLabel.text = "3・匂いを感じない"
-        fourthLabel.text = "4・味が薄く感じる"
-        fifthLabel.text = "5・だるさがある"
+        firstLabel.text = "37.5度以上の熱がある"
+        secondLabel.text = "のどの痛みがある"
+        thirdLabel.text = "匂いを感じない"
+        fourthLabel.text = "味が薄く感じる"
+        fifthLabel.text = "だるさがある"
         
 //        checkButton.layer.borderColor = .init(srgbRed: 0/255, green: 30/255, blue: 150/255, alpha: 0.7)
 //        checkButton.layer.borderWidth = 2
         checkButton.layer.cornerRadius = 5
-        checkButton.tintColor = .white
+        checkButton.tintColor = colors.white
         checkButton.setTitle(checkLabel, for: .normal)
-        checkButton.backgroundColor = .init(red: 0/255, green: 30/255, blue: 120/255, alpha: 0.6)
+        checkButton.backgroundColor = colors.blue
+        
+        checkView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        checkView.layer.shadowRadius = 5
+        checkView.layer.cornerRadius = 5
+        checkView.layer.shadowOpacity = 0.4
+        checkView.layer.shadowColor = UIColor.black.cgColor
         
         firstSwitch.isOn = false
         secondSwitch.isOn = false
@@ -131,8 +121,8 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         fourthSwitch.isOn = false
         fifthSwitch.isOn = false
         
-        calendarView.appearance.headerTitleColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
-        calendarView.appearance.weekdayTextColor = .init(red: 0/255, green: 30/255, blue: 150/255, alpha: 0.9)
+        calendarView.appearance.headerTitleColor = colors.bluePurple
+        calendarView.appearance.weekdayTextColor = colors.bluePurple
         
         //診断をしていた場合、チェックボタンを無効にする
         LaunchCheck()
@@ -239,6 +229,14 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     try! realm.write{
                         realm.add(countArray)
                     }
+                    
+                    self.checkButton.setTitle("本日終了", for: .normal)
+                    self.firstSwitch.isEnabled = false
+                    self.secondSwitch.isEnabled = false
+                    self.thirdSwitch.isEnabled = false
+                    self.fourthSwitch.isEnabled = false
+                    self.fifthSwitch.isEnabled = false
+                    self.checkButton.isEnabled = false
                 })
             }
             
@@ -250,16 +248,6 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         alert.addAction(no)
         present(alert, animated: true, completion: {
         })
-        checkButton.setTitle("本日終了", for: .normal)
-        firstSwitch.isEnabled = false
-        secondSwitch.isEnabled = false
-        thirdSwitch.isEnabled = false
-        fourthSwitch.isEnabled = false
-        fifthSwitch.isEnabled = false
-        checkButton.isEnabled = false
-        
-        
-        
     }
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)
@@ -354,5 +342,19 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let today = String(dateFormatter.string(from: date)).replacingOccurrences(of: "/", with: "-")
         let trans = today.components(separatedBy: "-")
         day = "\(trans[0])-\(NSString(format: "%02d",Int(trans[1])!))-\(NSString(format: "%02d",Int(trans[2])!))"
+    }
+    func imageStatus(_ name: String) -> UIImageView{
+        let imageView = UIImageView()
+        let image = UIImage(named: name)
+        imageView.image = image
+        imageView.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
+        return imageView
+    }
+    func uiViewStatus(_ view: UIView, _ radius: CGFloat) {
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.cornerRadius = radius
     }
 }

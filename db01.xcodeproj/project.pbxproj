@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D778F31248E87F300ED9B6F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D778F30248E87F300ED9B6F /* Colors.swift */; };
 		3D9F8D9E2476E2D3007A42DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8D9D2476E2D3007A42DE /* AppDelegate.swift */; };
 		3D9F8DA02476E2D3007A42DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */; };
 		3D9F8DA22476E2D3007A42DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8DA12476E2D3007A42DE /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D778F30248E87F300ED9B6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3D9F8D9A2476E2D3007A42DE /* db01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = db01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9F8D9D2476E2D3007A42DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,10 +117,12 @@
 				3D9F8D9D2476E2D3007A42DE /* AppDelegate.swift */,
 				3D9F8DB12476E7D0007A42DE /* Test.swift */,
 				3DEA00E0247F9CB2002BFE74 /* Covid.swift */,
+				3D778F30248E87F300ED9B6F /* Colors.swift */,
 				3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */,
 				3D9F8DA12476E2D3007A42DE /* ViewController.swift */,
-				3D9F8DA32476E2D3007A42DE /* Main.storyboard */,
 				3DC7FC552481854800B6E1CF /* CalenderViewController.swift */,
+				3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */,
+				3D9F8DA32476E2D3007A42DE /* Main.storyboard */,
 				3D9F8DB32478BE3A007A42DE /* Table.swift */,
 				3D9F8DB7247A5EB7007A42DE /* TableCell.swift */,
 				3D9F8DBF247AD2F3007A42DE /* CustomTableViewCell.swift */,
@@ -131,7 +135,6 @@
 				3D9F8DBB247AD268007A42DE /* CustomTableView.swift */,
 				3D9F8DCF247D8266007A42DE /* SecondViewController.swift */,
 				3D9F8DD1247D826D007A42DE /* ThirdViewController.swift */,
-				3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */,
 				3D9F8DA62476E2D5007A42DE /* Assets.xcassets */,
 				3D9F8DA82476E2D5007A42DE /* LaunchScreen.storyboard */,
 				3D9F8DAB2476E2D5007A42DE /* Info.plist */,
@@ -260,6 +263,7 @@
 				3D9F8DB9247A5EB7007A42DE /* TableCell.swift in Sources */,
 				3D9F8DA22476E2D3007A42DE /* ViewController.swift in Sources */,
 				3DC7FC782485489000B6E1CF /* ChartFirstViewController.swift in Sources */,
+				3D778F31248E87F300ED9B6F /* Colors.swift in Sources */,
 				3D9F8DD0247D8266007A42DE /* SecondViewController.swift in Sources */,
 				3D9F8DC1247AD2F3007A42DE /* CustomTableViewCell.swift in Sources */,
 				3D9F8DD6247D8A6D007A42DE /* PagesViewController.swift in Sources */,

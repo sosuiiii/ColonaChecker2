@@ -26,6 +26,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
     var pre:Results<Preference>?
     var segment = 0
     var segmentDataCount = 0
+    let colors = Colors.init()
     
     override func viewDidLayoutSubviews() {
         let width = view.frame.size.width
@@ -42,20 +43,41 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             segmentListHeight -= 10
             segmentDataHeight -= 10
         }
+//        let topView = UIView()
+//        topView.frame = CGRect(x: 0, y: 0, width: width, height: 64)
+//        topView.backgroundColor = colors.bluePurple
+//        view.addSubview(topView)
+        
+        let backButton = UIButton(type: .system)
+        backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
+        backButton.setTitle("戻る", for: .normal)
+        backButton.setTitleColor(colors.white, for: .normal)
+        backButton.titleLabel?.font = .systemFont(ofSize: 20)
+        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        view.addSubview(backButton)
+        
+        let nextButton = UIButton(type: .system)
+        nextButton.frame = CGRect(x: view.frame.size.width - 105, y: 25, width: 100, height: 30)
+        nextButton.setTitle("円グラフ", for: .normal)
+        nextButton.setTitleColor(colors.white, for: .normal)
+        nextButton.titleLabel?.font = .systemFont(ofSize: 20)
+        nextButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        view.addSubview(nextButton)
+        
         segmentList.frame = CGRect(x: 10, y: 105 - segmentListHeight, width: width - 20, height: 20)
         segmentList.setTitle("都道府県別", forSegmentAt: 0)
         segmentList.setTitle("昇順", forSegmentAt: 1)
         segmentList.setTitle("降順", forSegmentAt: 2)
-        segmentList.selectedSegmentTintColor = .init(red: 40/255, green: 72/255, blue: 104/255, alpha: 1)
+        segmentList.selectedSegmentTintColor = colors.blue
         segmentList.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        segmentList.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.init(red: 0/255, green: 32/255, blue: 64/255, alpha: 1)], for: .normal)
+        segmentList.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors.bluePurple], for: .normal)
         segmentData.frame = CGRect(x: 10, y: 135 - segmentDataHeight, width: width - 20, height: 20)
         segmentData.setTitle("感染者数", forSegmentAt: 0)
         segmentData.setTitle("PCR検査人数", forSegmentAt: 1)
         segmentData.setTitle("死者数", forSegmentAt: 2)
-        segmentData.selectedSegmentTintColor = .init(red: 40/255, green: 72/255, blue: 104/255, alpha: 1)
+        segmentData.selectedSegmentTintColor = colors.blue
         segmentData.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        segmentData.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.init(red: 0/255, green: 32/255, blue: 64/255, alpha: 1)], for: .normal)
+        segmentData.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors.bluePurple], for: .normal)
         
         let leftFix:CGFloat = 120
         let rightFix:CGFloat = 30
@@ -89,21 +111,31 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         let size = view.frame.size
         view.backgroundColor = .systemGray6
         
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60)
+        gradientLayer.colors = [colors.bluePurple.cgColor,
+                                colors.blue.cgColor,
+                                /*colors.blue.cgColor,
+                                colors.blueGreen.cgColor*/]
+        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint.init(x: 1, y:1)
+        view.layer.insertSublayer(gradientLayer, at:0)
+        
         segmentList.selectedSegmentIndex = segment
         segmentData.selectedSegmentIndex = segmentDataCount
         
         name.text = "場所 "
-        name.textColor = .white
-        name.font = .systemFont(ofSize: 17, weight: .ultraLight)
+        name.textColor = colors.bluePurple
+        name.font = .systemFont(ofSize: 17, weight: .medium)
         cases.text = "感染数 "
-        cases.textColor = .white
-        cases.font = .systemFont(ofSize: 17, weight: .ultraLight)
+        cases.textColor = colors.bluePurple
+        cases.font = .systemFont(ofSize: 17, weight: .medium)
         pcr.text = "PCR数 "
-        pcr.textColor = .white
-        pcr.font = .systemFont(ofSize: 17, weight: .ultraLight)
+        pcr.textColor = colors.bluePurple
+        pcr.font = .systemFont(ofSize: 17, weight: .medium)
         deaths.text = "死者数 "
-        deaths.textColor = .white
-        deaths.font = .systemFont(ofSize: 17, weight: .ultraLight)
+        deaths.textColor = colors.bluePurple
+        deaths.font = .systemFont(ofSize: 17, weight: .medium)
         var chartFixHeight:CGFloat = 0
         if view.frame.size.height == 667 {
             chartFixHeight = 45
@@ -113,16 +145,18 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             chartFixHeight -= 20
         }
         let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 180 - chartFixHeight, width: size.width, height: (520 - chartFixHeight )))
-        chartView.legend.textColor = .white
+        chartView.legend.textColor = colors.bluePurple
         chartView.animate(yAxisDuration: 1.0, easingOption: .easeOutCirc)
         chartView.xAxis.labelCount = 47
-        chartView.xAxis.labelTextColor = .white
+        chartView.xAxis.labelTextColor = colors.bluePurple
         chartView.doubleTapToZoomEnabled = false
         chartView.pinchZoomEnabled = false
-        chartView.gridBackgroundColor = .red
-        chartView.leftAxis.labelTextColor = .white
-        chartView.rightAxis.labelTextColor = .white
+        chartView.leftAxis.labelTextColor = colors.bluePurple
+        chartView.rightAxis.labelTextColor = colors.bluePurple
         chartView.delegate = self
+        chartView.xAxis.drawGridLinesEnabled = false
+//        chartView.leftAxis.drawGridLinesEnabled = false
+//        chartView.rightAxis.drawGridLinesEnabled = false
             
         
         let realm = try! Realm()
@@ -172,20 +206,20 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             }
         }
         let set = BarChartDataSet(entries: entrys, label: "県別状況")
-        set.colors = [NSUIColor.init(red: 205/255, green: 203/255, blue: 100/255, alpha: 1)]
-        set.valueTextColor = .white
-        set.highlightColor = .init(red: 39/255, green: 148/255, blue: 52/255, alpha: 1)
+        set.colors = [colors.blue]
+        set.valueTextColor = colors.bluePurple
+        set.highlightColor = colors.green
         set.drawIconsEnabled = true
         chartView.data = BarChartData(dataSet: set)
         view.addSubview(chartView)
         //グラデーション
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 170 - chartFixHeight, width: size.width, height: view.frame.size.height - 100)
-        gradientLayer.colors = [UIColor(red: 40/255, green: 72/255, blue: 104/255, alpha: 1).cgColor,
-                                    UIColor(red: 10/255, green: 42/255, blue: 74/255, alpha: 1).cgColor]
-        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint.init(x: 0.5, y:1)
-        view.layer.insertSublayer(gradientLayer, at: 0)
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = CGRect(x: 0, y: 170 - chartFixHeight, width: size.width, height: view.frame.size.height)
+//        gradientLayer.colors = [colors.bluePurple.cgColor,
+//                                colors.blue.cgColor]
+//        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint.init(x: 0.5, y:1)
+//        view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     @IBAction func segmentListAction(_ sender: UISegmentedControl) {
@@ -217,6 +251,9 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
             loadView()
             viewDidLoad()
         }
+    }
+    @objc func backButtonAction(){
+        dismiss(animated: true, completion: nil)
     }
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] {

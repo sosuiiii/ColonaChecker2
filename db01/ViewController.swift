@@ -37,16 +37,18 @@ class ViewController: UIViewController{
     @IBOutlet weak var dischargeNum: UILabel!
     
     private var result:[Prefecture.Obj] = []
+    let colors = Colors.init()
     
     override func viewDidLayoutSubviews() {
-        let width = Int(view.frame.size.width)
-        let height = Int(view.frame.size.height)
-        var textHeight = 0
-        var buttonHeight = 0
-        var contentHeight = 0
+        let width:CGFloat = view.frame.size.width
+        let height:CGFloat = view.frame.size.height
+        var textHeight:CGFloat = 0
+        var buttonHeight:CGFloat = 0
+        var contentHeight:CGFloat = 0
         if height == 667 {
-            textHeight = 20
-            buttonHeight = 70
+            textHeight = 30
+            buttonHeight = 60
+            contentHeight -= 10
         } else if height == 736 {
             textHeight = 10
             buttonHeight = 50
@@ -58,98 +60,123 @@ class ViewController: UIViewController{
             textHeight -= 20
             buttonHeight -= 20
         }
+        
+        
+        let labelWidth:CGFloat = 150
+        let labelHeight:CGFloat = 50
+        let widthSub:CGFloat = 140
+        let widthAdd:CGFloat = 30
+        let labelSize:CGFloat = 15
+        let numSize:CGFloat = 35
+        
+        titleLabel.frame = CGRect(x: width / 2 - 105, y: 130 - textHeight, width: 300, height: labelHeight)
+        titleLabel.font = UIFont(name: "Helvetica-Light", size: 25)
+        containLabel.frame = CGRect(x: 0, y: 170 + contentHeight, width: width, height: 340)
+        pcr.frame = CGRect(x: width / 2 - widthSub, y: 20, width: labelWidth, height: labelHeight)
+        pcr.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        pcrNum.frame = CGRect(x: width / 2 - widthSub, y: 60, width: labelWidth, height: labelHeight)
+        pcrNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        positive.frame = CGRect(x: width / 2 + widthAdd, y: 20, width: labelWidth, height: labelHeight)
+        positive.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        positiveNum.frame = CGRect(x: width / 2 + widthAdd, y: 60, width: labelWidth, height: labelHeight)
+        positiveNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        hospitalize.frame = CGRect(x: width / 2 - widthSub, y: 120, width: labelWidth, height: labelHeight)
+        hospitalize.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        hospitalizeNum.frame = CGRect(x: width / 2 - widthSub, y: 160, width: labelWidth, height: labelHeight)
+        hospitalizeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        severe.frame = CGRect(x: width / 2 + widthAdd, y: 120, width: labelWidth, height: labelHeight)
+        severe.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        severeNum.frame = CGRect(x: width / 2 + widthAdd, y: 160, width: labelWidth, height: labelHeight)
+        severeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        death.frame = CGRect(x: width / 2 - widthSub, y: 220, width: labelWidth, height: labelHeight)
+        death.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        deathNum.frame = CGRect(x: width / 2 - widthSub, y: 260, width: labelWidth, height: labelHeight)
+        deathNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        discharge.frame = CGRect(x: width / 2 + widthAdd, y: 220, width: labelWidth, height: labelHeight)
+        discharge.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        dischargeNum.frame = CGRect(x: width / 2 + widthAdd, y: 260, width: labelWidth, height: labelHeight)
+        dischargeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
+        
         healthButton.frame = CGRect(x: width / 2 - 100, y: height - 190 + buttonHeight, width: 200, height: 40)
         healthButton.titleLabel?.font = .systemFont(ofSize: 20)
         infoButton.frame = CGRect(x: width / 2 - 100, y: height - 130 + buttonHeight, width: 200, height: 40)
         infoButton.titleLabel?.font = .systemFont(ofSize: 20)
         
-        let labelWidth:Int = 120
-        let labelHeight:Int = 50
-        let widthSub = 140
-        let widthAdd = 25
-        
-        titleLabel.frame = CGRect(x: width / 2 - 105, y: 130 - textHeight, width: 300, height: labelHeight)
-        titleLabel.font = UIFont(name: "Helvetica-Light", size: 25)
-        containLabel.frame = CGRect(x: 0, y: 170 + contentHeight, width: width, height: 340)
-        pcr.frame = CGRect(x: width / 2 - widthSub, y: 10, width: labelWidth, height: labelHeight)
-        pcr.font = .systemFont(ofSize: 30.0)
-        pcr.font = UIFont(name: "Helvetica-Light", size: 30)
-        pcrNum.frame = CGRect(x: width / 2 - widthSub, y: 60, width: labelWidth, height: labelHeight)
-        pcrNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
-        positive.frame = CGRect(x: width / 2 + widthAdd, y: 10, width: labelWidth, height: labelHeight)
-        positive.font = UIFont(name: "Helvetica-Light", size: 30)
-        positiveNum.frame = CGRect(x: width / 2 + widthAdd, y: 60, width: labelWidth, height: labelHeight)
-        positiveNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
-        hospitalize.frame = CGRect(x: width / 2 - widthSub, y: 110, width: labelWidth, height: labelHeight)
-        hospitalize.font = UIFont(name: "Helvetica-Light", size: 30)
-        hospitalizeNum.frame = CGRect(x: width / 2 - widthSub, y: 160, width: labelWidth, height: labelHeight)
-        hospitalizeNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
-        severe.frame = CGRect(x: width / 2 + widthAdd, y: 110, width: labelWidth, height: labelHeight)
-        severe.font = UIFont(name: "Helvetica-Light", size: 30)
-        severeNum.frame = CGRect(x: width / 2 + widthAdd, y: 160, width: labelWidth, height: labelHeight)
-        severeNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
-        death.frame = CGRect(x: width / 2 - widthSub, y: 210, width: labelWidth, height: labelHeight)
-        death.font = UIFont(name: "Helvetica-Light", size: 30)
-        deathNum.frame = CGRect(x: width / 2 - widthSub, y: 260, width: labelWidth, height: labelHeight)
-        deathNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
-        discharge.frame = CGRect(x: width / 2 + widthAdd, y: 210, width: labelWidth, height: labelHeight)
-        discharge.font = UIFont(name: "Helvetica-Light", size: 30)
-        dischargeNum.frame = CGRect(x: width / 2 + widthAdd, y: 260, width: labelWidth, height: labelHeight)
-        dischargeNum.font = .systemFont(ofSize: 30, weight: .ultraLight)
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backButton = UIButton(type: .system)
+        backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
+        backButton.setTitle("reload", for: .normal)
+        backButton.setTitleColor(colors.white, for: .normal)
+        backButton.titleLabel?.font = .systemFont(ofSize: 20)
+        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        view.addSubview(backButton)
+        
+        let imageView = UIImageView()
+        let image = UIImage(named: "virus")
+        imageView.image = image
+        imageView.frame = CGRect(x: view.frame.size.width + 0, y: 100, width: 50, height: 50)
+        imageView.layer.accessibilityRespondsToUserInteraction = false
+        view.addSubview(imageView)
+        UIView.animate(withDuration: 1.5, delay: 0.5, options: [.curveEaseIn], animations: {
+            imageView.frame = CGRect(x: self.view.frame.size.width - 100, y: 100, width: 50, height: 50)
+            imageView.transform = .init(rotationAngle: -900)
+        }, completion: nil)
+        
         view.backgroundColor = .systemGray6
         
-        let cgColor:CGColor = .init(srgbRed: 0/255, green: 30/255, blue: 120/255, alpha: 0.7)
-        let color:UIColor = .white
+        let cgColor:CGColor = colors.blue.cgColor
+//        let cgColor:CGColor = .init(srgbRed: 0/255, green: 30/255, blue: 120/255, alpha: 0.7)
+        let color:UIColor = colors.blue
         
         let gradientLayer = CAGradientLayer()
-        // グラデーションレイヤーの領域の設定
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 340)
-        // グラデーションカラーの設定
-        gradientLayer.colors = [UIColor(red: 5/255, green: 222/255, blue: 240/255, alpha: 0.8).cgColor,
-                                UIColor(red: 39/255, green: 48/255, blue: 152/255, alpha: 0.8).cgColor]
-        // 左上から右下へグラデーション向きの設定
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200)
+        gradientLayer.colors = [colors.bluePurple.cgColor,
+                                colors.blue.cgColor,
+                                /*colors.blue.cgColor,
+                                colors.blueGreen.cgColor*/]
         gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint.init(x: 0.5, y:1)
-        containLabel.layer.insertSublayer(gradientLayer, at:0)
+        gradientLayer.endPoint = CGPoint.init(x: 1, y:1)
+        view.layer.insertSublayer(gradientLayer, at:0)
         containLabel.layer.cornerRadius = 30
-        containLabel.layer.shadowOffset = CGSize(width: 0, height: 10)
-        containLabel.layer.shadowColor = UIColor.black.cgColor
-        containLabel.layer.shadowOpacity = 0.6
+        containLabel.layer.shadowOffset = CGSize(width: 0, height: 4)
+        containLabel.layer.shadowColor = UIColor.gray.cgColor
+        containLabel.layer.shadowOpacity = 0.5
         containLabel.layer.shadowRadius = 4
+        containLabel.backgroundColor = .white
         
-        navigationController?.navigationBar.barTintColor = .init(red: 0/255, green: 30/255, blue: 100/255, alpha: 0.1)
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        title = "コロナチェッカー"
+//        navigationController?.navigationBar.barTintColor = colors.blue
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+//        title = "コロナチェッカー"
         
 //      healthButton.layer.borderColor = UIColor.white.cgColor
-        healthButton.layer.backgroundColor = cgColor
+        healthButton.layer.backgroundColor = colors.white.cgColor
 //        healthButton.layer.borderWidth = 1
         healthButton.layer.cornerRadius = 5
         healthButton.tintColor = color
         healthButton.setTitle("健 康 管 理", for: .normal)
 //        infoButton.layer.borderColor = cgColor
-        infoButton.layer.backgroundColor = cgColor
+        infoButton.layer.backgroundColor = colors.white.cgColor
 //        infoButton.layer.borderWidth = 1
         infoButton.layer.cornerRadius = 5
         infoButton.frame.size.width = 200
         infoButton.tintColor = color
         infoButton.setTitle("県 別 状 況", for: .normal)
         
-        let uiColor:UIColor = .init(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.8)
-        titleLabel.text = "日本全体の感染状況"
-        titleLabel.textColor = .init(red: 0/255, green: 40/255, blue: 120/255, alpha: 0.8)
-        titleLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
-        titleLabel.layer.shadowOpacity = 0.5
-        titleLabel.layer.shadowRadius = 5
+        let uiColor:UIColor = colors.black
+        titleLabel.text = "Covid in Japan"
+        titleLabel.textColor = colors.white
+//        titleLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+//        titleLabel.layer.shadowOpacity = 0.5
+//        titleLabel.layer.shadowRadius = 5
+        
         pcr.text = "PCR数"
         pcr.textColor = uiColor
-        pcr.textAlignment = .center
+//        pcr.textAlignment = .center
         positive.text = "感染者数"
         positive.textColor = uiColor
         hospitalize.text = "入院者数"
@@ -158,43 +185,43 @@ class ViewController: UIViewController{
         severe.textColor = uiColor
         death.text = "死者数"
         death.textColor = uiColor
-        death.textAlignment = .center
+//        death.textAlignment = .center
         discharge.text = "退院者数"
         discharge.textColor = uiColor
         pcrNum.layer.borderColor = cgColor
 //        pcrNum.layer.borderWidth = 1
         pcrNum.layer.cornerRadius = 5
         pcrNum.textColor = color
-        pcrNum.textAlignment = .center
+//        pcrNum.textAlignment = .center
         pcrNum.alpha = 0.0
         positiveNum.layer.borderColor = cgColor
 //        positiveNum.layer.borderWidth = 1
         positiveNum.layer.cornerRadius = 5
-        positiveNum.textAlignment = .center
+//        positiveNum.textAlignment = .center
         positiveNum.textColor = color
         positiveNum.alpha = 0.0
         hospitalizeNum.layer.borderColor = cgColor
 //        hospitalizeNum.layer.borderWidth = 1
         hospitalizeNum.layer.cornerRadius = 5
-        hospitalizeNum.textAlignment = .center
+//        hospitalizeNum.textAlignment = .center
         hospitalizeNum.textColor = color
         hospitalizeNum.alpha = 0.0
         severeNum.layer.borderColor = cgColor
 //        severeNum.layer.borderWidth = 1
         severeNum.layer.cornerRadius = 5
-        severeNum.textAlignment = .center
+//        severeNum.textAlignment = .center
         severeNum.textColor = color
         severeNum.alpha = 0.0
         deathNum.layer.borderColor = cgColor
 //        deathNum.layer.borderWidth = 1
         deathNum.layer.cornerRadius = 5
-        deathNum.textAlignment = .center
+//        deathNum.textAlignment = .center
         deathNum.textColor = color
         deathNum.alpha = 0.0
         dischargeNum.layer.borderColor = cgColor
 //        dischargeNum.layer.borderWidth = 1
         dischargeNum.layer.cornerRadius = 5
-        dischargeNum.textAlignment = .center
+//        dischargeNum.textAlignment = .center
         dischargeNum.textColor = color
         dischargeNum.alpha = 0.0
         
@@ -206,6 +233,7 @@ class ViewController: UIViewController{
     }
     
     @IBAction func healthButton(_ sender: Any) {
+        KRProgressHUD.appearance().activityIndicatorColors = .init(arrayLiteral: colors.blue)
         KRProgressHUD.show(withMessage: "Loading...", completion: {
             self.performSegue(withIdentifier: "goHealth", sender: nil)
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
@@ -221,6 +249,10 @@ class ViewController: UIViewController{
 //                })
 //            }
 //        })
+    }
+    @objc func backButtonAction() {
+        viewDidLoad()
+        viewDidLayoutSubviews()
     }
     func testData(){
         let countArray = Colona()

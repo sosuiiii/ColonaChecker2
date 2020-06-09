@@ -24,3 +24,4 @@ struct Colors {
     let white:UIColor = .systemGray6
     let black:UIColor = .init(red: 0, green: 0, blue: 0, alpha: 0.9)
 }
+

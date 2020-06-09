@@ -151,6 +151,7 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         chartView.rightAxis.labelTextColor = colors.bluePurple
         chartView.delegate = self
         chartView.xAxis.drawGridLinesEnabled = false
+//        chartView.legend.enabled = false
             
         let realm = try! Realm()
         let pref = realm.objects(Preference.self)

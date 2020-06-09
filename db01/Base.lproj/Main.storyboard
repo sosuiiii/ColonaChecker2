@@ -735,10 +735,33 @@
                     <view key="view" contentMode="scaleToFill" id="2fH-CY-Jyf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CGO-Ti-Hd8">
+                                <rect key="frame" x="142" y="74" width="131" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title="Third"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentAction:" destination="MJI-D6-bnE" eventType="valueChanged" id="yWn-dM-FPE"/>
+                                </connections>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-SR-WdH">
+                                <rect key="frame" x="0.0" y="105" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1ac-x9-dGf"/>
                     </view>
                     <navigationItem key="navigationItem" id="G5b-9j-xR7"/>
+                    <connections>
+                        <outlet property="searchBar" destination="JYc-SR-WdH" id="gB1-Ts-MtQ"/>
+                        <outlet property="segmentControl" destination="CGO-Ti-Hd8" id="vfT-fX-FkH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c92-Gb-AW0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

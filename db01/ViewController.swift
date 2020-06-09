@@ -70,30 +70,30 @@ class ViewController: UIViewController{
         let numSize:CGFloat = 35
         
         titleLabel.frame = CGRect(x: width / 2 - 105, y: 130 - textHeight, width: 300, height: labelHeight)
-        titleLabel.font = UIFont(name: "Helvetica-Light", size: 25)
+        titleLabel.font = .systemFont(ofSize: 25, weight: .heavy)
         containLabel.frame = CGRect(x: 0, y: 170 + contentHeight, width: width, height: 340)
         pcr.frame = CGRect(x: width / 2 - widthSub, y: 20, width: labelWidth, height: labelHeight)
-        pcr.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        pcr.font = .systemFont(ofSize: labelSize, weight: .heavy)
         pcrNum.frame = CGRect(x: width / 2 - widthSub, y: 60, width: labelWidth, height: labelHeight)
         pcrNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         positive.frame = CGRect(x: width / 2 + widthAdd, y: 20, width: labelWidth, height: labelHeight)
-        positive.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        positive.font = .systemFont(ofSize: labelSize, weight: .heavy)
         positiveNum.frame = CGRect(x: width / 2 + widthAdd, y: 60, width: labelWidth, height: labelHeight)
         positiveNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         hospitalize.frame = CGRect(x: width / 2 - widthSub, y: 120, width: labelWidth, height: labelHeight)
-        hospitalize.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        hospitalize.font = .systemFont(ofSize: labelSize, weight: .heavy)
         hospitalizeNum.frame = CGRect(x: width / 2 - widthSub, y: 160, width: labelWidth, height: labelHeight)
         hospitalizeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         severe.frame = CGRect(x: width / 2 + widthAdd, y: 120, width: labelWidth, height: labelHeight)
-        severe.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        severe.font = .systemFont(ofSize: labelSize, weight: .heavy)
         severeNum.frame = CGRect(x: width / 2 + widthAdd, y: 160, width: labelWidth, height: labelHeight)
         severeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         death.frame = CGRect(x: width / 2 - widthSub, y: 220, width: labelWidth, height: labelHeight)
-        death.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        death.font = .systemFont(ofSize: labelSize, weight: .heavy)
         deathNum.frame = CGRect(x: width / 2 - widthSub, y: 260, width: labelWidth, height: labelHeight)
         deathNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         discharge.frame = CGRect(x: width / 2 + widthAdd, y: 220, width: labelWidth, height: labelHeight)
-        discharge.font = UIFont(name: "Helvetica-Light", size: labelSize)
+        discharge.font = .systemFont(ofSize: labelSize, weight: .heavy)
         dischargeNum.frame = CGRect(x: width / 2 + widthAdd, y: 260, width: labelWidth, height: labelHeight)
         dischargeNum.font = .systemFont(ofSize: numSize, weight: .heavy)
         
@@ -158,7 +158,7 @@ class ViewController: UIViewController{
         infoButton.tintColor = color
         infoButton.setTitle("県 別 状 況", for: .normal)
         
-        let uiColor:UIColor = colors.black
+        let uiColor:UIColor = colors.bluePurple
         titleLabel.text = "Covid in Japan"
         titleLabel.textColor = colors.white
         
@@ -199,8 +199,8 @@ class ViewController: UIViewController{
             self.performSegue(withIdentifier: "goChart", sender: nil)
     }
     @objc func backButtonAction() {
+        loadView()
         viewDidLoad()
-        viewDidLayoutSubviews()
     }
     func testData(){
         let countArray = Colona()

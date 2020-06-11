@@ -126,10 +126,10 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendarView.appearance.headerTitleColor = colors.bluePurple
         calendarView.appearance.weekdayTextColor = colors.bluePurple
         
-        //診断をしていた場合、チェックボタンを無効にする
-        LaunchCheck()
         //今日の日付を変数dayに代入
         today()
+        //診断をしていた場合、チェックボタンを無効にする
+        LaunchCheck()
         
         KRProgressHUD.dismiss()
         
@@ -344,6 +344,7 @@ class CalenderViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let today = String(dateFormatter.string(from: date)).replacingOccurrences(of: "/", with: "-")
         let trans = today.components(separatedBy: "-")
         day = "\(trans[0])-\(NSString(format: "%02d",Int(trans[1])!))-\(NSString(format: "%02d",Int(trans[2])!))"
+
     }
     func imageStatus(_ name: String) -> UIImageView{
         let imageView = UIImageView()

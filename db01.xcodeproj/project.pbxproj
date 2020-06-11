@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D4D8C5724910A100079F7F0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D8C5624910A100079F7F0 /* ChatViewController.swift */; };
+		3D4D8C5924917C740079F7F0 /* MessagesKitResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D8C5824917C740079F7F0 /* MessagesKitResource.swift */; };
+		3D4D8C5B24918F460079F7F0 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D8C5A24918F460079F7F0 /* Test2ViewController.swift */; };
 		3D778F31248E87F300ED9B6F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D778F30248E87F300ED9B6F /* Colors.swift */; };
 		3D7F3A3D248F1C8600CDD2C4 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F3A3C248F1C8600CDD2C4 /* CircleViewController.swift */; };
 		3D7F3A3F248FE10100CDD2C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D7F3A3E248FE10100CDD2C4 /* GoogleService-Info.plist */; };
+		3D7F3A4124908BB000CDD2C4 /* ChatOriginalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F3A4024908BB000CDD2C4 /* ChatOriginalViewController.swift */; };
 		3D9F8D9E2476E2D3007A42DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8D9D2476E2D3007A42DE /* AppDelegate.swift */; };
 		3D9F8DA02476E2D3007A42DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */; };
 		3D9F8DA22476E2D3007A42DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F8DA12476E2D3007A42DE /* ViewController.swift */; };
@@ -36,9 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D4D8C5624910A100079F7F0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		3D4D8C5824917C740079F7F0 /* MessagesKitResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesKitResource.swift; sourceTree = "<group>"; };
+		3D4D8C5A24918F460079F7F0 /* Test2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
 		3D778F30248E87F300ED9B6F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3D7F3A3C248F1C8600CDD2C4 /* CircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
 		3D7F3A3E248FE10100CDD2C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D7F3A4024908BB000CDD2C4 /* ChatOriginalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOriginalViewController.swift; sourceTree = "<group>"; };
 		3D9F8D9A2476E2D3007A42DE /* db01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = db01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9F8D9D2476E2D3007A42DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,12 +130,16 @@
 				3D9F8DB12476E7D0007A42DE /* Test.swift */,
 				3DEA00E0247F9CB2002BFE74 /* Covid.swift */,
 				3D778F30248E87F300ED9B6F /* Colors.swift */,
+				3D4D8C5824917C740079F7F0 /* MessagesKitResource.swift */,
 				3D9F8D9F2476E2D3007A42DE /* SceneDelegate.swift */,
 				3D9F8DA12476E2D3007A42DE /* ViewController.swift */,
 				3DC7FC552481854800B6E1CF /* CalenderViewController.swift */,
 				3DC7FC772485488F00B6E1CF /* ChartFirstViewController.swift */,
 				3D7F3A3C248F1C8600CDD2C4 /* CircleViewController.swift */,
+				3D4D8C5624910A100079F7F0 /* ChatViewController.swift */,
 				3D9F8DA32476E2D3007A42DE /* Main.storyboard */,
+				3D7F3A4024908BB000CDD2C4 /* ChatOriginalViewController.swift */,
+				3D4D8C5A24918F460079F7F0 /* Test2ViewController.swift */,
 				3D9F8DB32478BE3A007A42DE /* Table.swift */,
 				3D9F8DB7247A5EB7007A42DE /* TableCell.swift */,
 				3D9F8DBF247AD2F3007A42DE /* CustomTableViewCell.swift */,
@@ -268,20 +280,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9F8DB9247A5EB7007A42DE /* TableCell.swift in Sources */,
+				3D7F3A4124908BB000CDD2C4 /* ChatOriginalViewController.swift in Sources */,
 				3D9F8DA22476E2D3007A42DE /* ViewController.swift in Sources */,
 				3D7F3A3D248F1C8600CDD2C4 /* CircleViewController.swift in Sources */,
 				3DC7FC782485489000B6E1CF /* ChartFirstViewController.swift in Sources */,
 				3D778F31248E87F300ED9B6F /* Colors.swift in Sources */,
 				3D9F8DD0247D8266007A42DE /* SecondViewController.swift in Sources */,
+				3D4D8C5B24918F460079F7F0 /* Test2ViewController.swift in Sources */,
 				3D9F8DC1247AD2F3007A42DE /* CustomTableViewCell.swift in Sources */,
 				3D9F8DD6247D8A6D007A42DE /* PagesViewController.swift in Sources */,
 				3DEA00E1247F9CB2002BFE74 /* Covid.swift in Sources */,
+				3D4D8C5724910A100079F7F0 /* ChatViewController.swift in Sources */,
 				3D9F8DD2247D826D007A42DE /* ThirdViewController.swift in Sources */,
 				3D9F8DB42478BE3A007A42DE /* Table.swift in Sources */,
 				3D9F8D9E2476E2D3007A42DE /* AppDelegate.swift in Sources */,
 				3D9F8DBD247AD268007A42DE /* CustomTableView.swift in Sources */,
 				3D9F8DA02476E2D3007A42DE /* SceneDelegate.swift in Sources */,
 				3D9F8DB22476E7D0007A42DE /* Test.swift in Sources */,
+				3D4D8C5924917C740079F7F0 /* MessagesKitResource.swift in Sources */,
 				3DC7FC4F24805D9900B6E1CF /* CustomTableViewCellSecond.swift in Sources */,
 				3DC7FC562481854800B6E1CF /* CalenderViewController.swift in Sources */,
 				3DC7FC5324805DA900B6E1CF /* CustomTableViewCellThird.swift in Sources */,

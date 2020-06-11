@@ -11,6 +11,7 @@ import UIKit
 import RealmSwift
 import Alamofire
 import KRProgressHUD
+import FirebaseFirestore
 
 class ViewController: UIViewController{
     
@@ -38,6 +39,7 @@ class ViewController: UIViewController{
     
     private var result:[Prefecture.Obj] = []
     let colors = Colors.init()
+    var day = ""
     
     override func viewDidLayoutSubviews() {
         let width:CGFloat = view.frame.size.width
@@ -68,6 +70,18 @@ class ViewController: UIViewController{
         let widthAdd:CGFloat = 30
         let labelSize:CGFloat = 15
         let numSize:CGFloat = 35
+        
+        today()
+        
+        Firestore.firestore().collection("users").document("lastLaunch").setData([
+            "lastLaunch": day
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
         
         titleLabel.frame = CGRect(x: width / 2 - 105, y: 130 - textHeight, width: 300, height: labelHeight)
         titleLabel.font = .systemFont(ofSize: 25, weight: .heavy)
@@ -108,12 +122,22 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         
         let backButton = UIButton(type: .system)
-        backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
-        backButton.setTitle("reload", for: .normal)
+        backButton.frame = CGRect(x: 15, y: 30, width: 30, height: 30)
+        backButton.setImage(UIImage(named: "refresh"), for: .normal)
+        backButton.tintColor = colors.white
         backButton.setTitleColor(colors.white, for: .normal)
         backButton.titleLabel?.font = .systemFont(ofSize: 20)
-        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(reloadButtonAction), for: .touchUpInside)
         view.addSubview(backButton)
+        
+        let chatButton = UIButton(type: .system)
+        chatButton.frame = CGRect(x: view.frame.size.width - 55, y: 25, width: 40, height: 40)
+        chatButton.tintColor = colors.white
+        chatButton.setImage(UIImage(named: "chat"), for: .normal)
+        chatButton.setTitleColor(colors.white, for: .normal)
+        chatButton.titleLabel?.font = .systemFont(ofSize: 20)
+        chatButton.addTarget(self, action: #selector(chatButtonAction), for: .touchUpInside)
+        view.addSubview(chatButton)
         
         let imageView = UIImageView()
         let image = UIImage(named: "virus2")
@@ -182,7 +206,7 @@ class ViewController: UIViewController{
         labelNum(deathNum, color: color, cgColor: cgColor)
         labelNum(dischargeNum, color: color, cgColor: cgColor)
         
-        testData()
+//        testData()
         numAnimate()
         realmPrefecture()
         realmJapan()
@@ -198,20 +222,12 @@ class ViewController: UIViewController{
     @IBAction func prefectureButton(_ sender: Any) {
             self.performSegue(withIdentifier: "goChart", sender: nil)
     }
-    @objc func backButtonAction() {
+    @objc func reloadButtonAction() {
         loadView()
         viewDidLoad()
     }
-    func testData(){
-        let countArray = Colona()
-        countArray.high.append("2020-05-31")
-        countArray.none.append("2020-06-01")
-        countArray.low.append("2020-05-28")
-        countArray.middle.append("2020-05-29")
-        let realms = try! Realm()
-        try! realms.write{
-            realms.add(countArray)
-        }
+    @objc func chatButtonAction() {
+        performSegue(withIdentifier: "goChat", sender: nil)
     }
     func numAnimate() {
         UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
@@ -233,6 +249,7 @@ class ViewController: UIViewController{
             }
         }
         getCovidInfo(completion: {(result: [Prefecture.Obj]) -> Void in
+            
             for i in 0...46 {
                 let preModel = Preference()
                 preModel.id = result[i].id
@@ -319,8 +336,15 @@ class ViewController: UIViewController{
                     completion(data!)
             }
         }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    func today() {
+        //今日の日付をdayに代入
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y-M-d", options: 0, locale: Locale(identifier: "ja_JP"))
+        let today = String(dateFormatter.string(from: date)).replacingOccurrences(of: "/", with: "-")
+        let trans = today.components(separatedBy: "-")
+        day = "\(trans[0])-\(NSString(format: "%02d",Int(trans[1])!))-\(NSString(format: "%02d",Int(trans[2])!))"
+
     }
 }
 

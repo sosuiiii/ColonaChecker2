@@ -18,5 +18,7 @@ target 'db01' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'MessageKit'
+  pod 'MessageInputBar'
 
 end

@@ -339,10 +339,18 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.4.0)
+  - InputBarAccessoryView (4.3.2):
+    - InputBarAccessoryView/Core (= 4.3.2)
+  - InputBarAccessoryView/Core (4.3.2)
   - KRActivityIndicatorView (3.0.5)
   - KRProgressHUD (3.4.5):
     - KRActivityIndicatorView (= 3.0.5)
   - leveldb-library (1.22)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (3.1.0):
+    - InputBarAccessoryView (~> 4.3.0)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -367,6 +375,8 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FSCalendar
   - KRProgressHUD
+  - MessageInputBar
+  - MessageKit
   - RealmSwift
   - SwiftyJSON
 
@@ -395,9 +405,12 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - InputBarAccessoryView
     - KRActivityIndicatorView
     - KRProgressHUD
     - leveldb-library
+    - MessageInputBar
+    - MessageKit
     - nanopb
     - PromisesObjC
     - Realm
@@ -428,15 +441,18 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
   KRActivityIndicatorView: 912bc0413d98340f384b12a4e1e6aa8f42fb377d
   KRProgressHUD: df4cdc3a1baf708d4276a089ee34d133fa9a6f3e
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Realm: 6b6f096671b64b04d08974177cabb2ff9343d153
   RealmSwift: a3db6be0488bf3e1d5314c2956cefe98a65cdd01
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 52571f6b40673bbdcbfb3c8b12f6f417bd808a39
+PODFILE CHECKSUM: 7e688ef38e046fd78a7582a66116aaee8765edac
 
 COCOAPODS: 1.8.4

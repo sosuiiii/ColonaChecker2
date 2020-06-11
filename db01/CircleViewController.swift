@@ -42,11 +42,10 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         segmentControl.selectedSegmentIndex = segment
         view.backgroundColor = colors.white
 
-        // Do any additional setup after loading the view.
         let backButton = UIButton(type: .system)
-        backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
-        backButton.setTitle("戻る", for: .normal)
-        backButton.setTitleColor(colors.white, for: .normal)
+        backButton.frame = CGRect(x: 10, y: 30, width: 20, height: 20)
+        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.tintColor = colors.white
         backButton.titleLabel?.font = .systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         view.addSubview(backButton)
@@ -64,7 +63,7 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
 
         
         searchBar.delegate = self
-        searchBar.placeholder = "都道府県を入力してください"
+        searchBar.placeholder = "都道府県を漢字で入力"
         searchBar.showsCancelButton = true
         searchBar.tintColor = colors.blue
         
@@ -95,7 +94,9 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         if searchText.contains("東京都") || searchText.contains("大阪府") || searchText.contains("県") {
             searchText = String(searchText.prefix(searchText.count - 1))
         }
-        let result = pref.filter("name == '\(searchText)'")
+        var optional:Results<Preference>?
+        optional = pref.filter("name == '\(searchText)'")
+        let result = optional ?? pref.filter("name == '東京'")
         uiView.addSubview(labelStatus(width / 2 - 60,10,100,50, text: "\(result[0].name)", size: 30, weight: .ultraLight, color: colors.black))
         
         uiView.addSubview(labelStatus(10,50,100,50, text: "PCR数", size: 15, weight: .bold, color: colors.bluePurple))

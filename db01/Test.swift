@@ -12,16 +12,18 @@ import RealmSwift
 private var realm: Realm!
  
 class Test: Object {
-    
     @objc dynamic var name = ""
     @objc dynamic var age = 0
-    
 }
 class Colona: Object {
-    let none = List<String>()
-    let low = List<String>()
-    let middle = List<String>()
-    let high = List<String>()
+//    @objc dynamic var none = ""
+//    @objc dynamic var low = ""
+//    @objc dynamic var middle = ""
+//    @objc dynamic var high = ""
+    var none = List<String>()
+    var low = List<String>()
+    var middle = List<String>()
+    var high = List<String>()
     
 }
 class Preference: Object {
@@ -39,5 +41,4 @@ class Japan: Object {
     @objc dynamic var severe = 0
     @objc dynamic var death = 0
     @objc dynamic var discharge = 0
-    
 }

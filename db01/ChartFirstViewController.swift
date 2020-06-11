@@ -45,9 +45,9 @@ class ChartFirstViewController: UIViewController, ChartViewDelegate {
         }
         
         let backButton = UIButton(type: .system)
-        backButton.frame = CGRect(x: 10, y: 25, width: 60, height: 30)
-        backButton.setTitle("戻る", for: .normal)
-        backButton.setTitleColor(colors.white, for: .normal)
+        backButton.frame = CGRect(x: 10, y: 30, width: 20, height: 20)
+        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.tintColor = colors.white
         backButton.titleLabel?.font = .systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         view.addSubview(backButton)

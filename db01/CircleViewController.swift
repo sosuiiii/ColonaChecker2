@@ -22,14 +22,24 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLayoutSubviews() {
         
-        segmentControl.frame = CGRect(x: 10, y: 70, width: view.frame.size.width - 20, height: 20)
+        let height:CGFloat = view.frame.size.height
+        var heightFix:CGFloat = 0
+        if height == 736 {
+            heightFix = 7
+        } else if height == 812 {
+            heightFix = 20
+        } else if height == 896 {
+            heightFix = 30
+        }
+        
+        segmentControl.frame = CGRect(x: 10, y: 70 + heightFix, width: view.frame.size.width - 20, height: 20)
         segmentControl.setTitle("感染者数", forSegmentAt: 0)
         segmentControl.setTitle("PCR数", forSegmentAt: 1)
         segmentControl.setTitle("死者数", forSegmentAt: 2)
         segmentControl.selectedSegmentTintColor = colors.blue
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors.white], for: .selected)
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors.black], for: .normal)
-        searchBar.frame = CGRect(x: 10, y: 100, width: view.frame.size.width - 20, height: 30)
+        searchBar.frame = CGRect(x: 10, y: 100 + heightFix, width: view.frame.size.width - 20, height: 30)
         
     }
 
@@ -37,7 +47,7 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         let width = view.frame.size.width
-//        let height = view.frame.size.height
+        let height = view.frame.size.height
         
         segmentControl.selectedSegmentIndex = segment
         view.backgroundColor = colors.white
@@ -67,8 +77,16 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = true
         searchBar.tintColor = colors.blue
         
+        var heightFix:CGFloat = 0
+        if height == 736 {
+            heightFix = 30
+        } else if height == 812 {
+            heightFix = 50
+        } else if height == 896 {
+            heightFix = 100
+        }
         let uiView = UIView()
-        uiView.frame = CGRect(x: 10, y: 480, width: view.frame.size.width - 20, height: 167)
+        uiView.frame = CGRect(x: 10, y: 480 + heightFix, width: view.frame.size.width - 20, height: 167)
         uiView.layer.cornerRadius = 10
         uiView.backgroundColor = .white
         uiView.layer.shadowColor = colors.black.cgColor
@@ -123,7 +141,7 @@ class CircleViewController: UIViewController, UISearchBarDelegate {
                 entrys += [PieChartDataEntry(value: Double(pre![i].deaths), label: pre![i].name)]
             }
         }
-        let circleView = PieChartView(frame: CGRect(x: 0, y: 150, width: width, height: 300))
+        let circleView = PieChartView(frame: CGRect(x: 0, y: 150 + heightFix, width: width, height: 300))
         circleView.centerText = "Top5"
         circleView.animate(xAxisDuration: 2, easingOption: .easeOutExpo)
         let dataSet = PieChartDataSet(entries: entrys)

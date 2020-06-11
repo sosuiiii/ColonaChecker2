@@ -156,8 +156,13 @@ class ViewController: UIViewController{
 //        let cgColor:CGColor = .init(srgbRed: 0/255, green: 30/255, blue: 120/255, alpha: 0.7)
         let color:UIColor = colors.blue
         
+        var fix:CGFloat = 0
+        if view.frame.size.height == 896 {
+            fix = 50
+        }
+        
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 250 + fix)
         gradientLayer.colors = [colors.bluePurple.cgColor,
                                 colors.blue.cgColor,
                                 /*colors.blue.cgColor,

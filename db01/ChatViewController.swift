@@ -18,6 +18,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
 
     private var messages: [Message] = []
     private var messageText: [String] = []
+    private var messageInterval: [TimeInterval] = []
     private var messageDate: [Date] = []
     let colors = Colors()
     lazy var formatter: DateFormatter = {
@@ -36,15 +37,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
             if let document = document, document.exists {
                 let dataDescription = document.get("UserMessage") ?? ["メッセージが存在しません"]
                 self.messageText += dataDescription as! Array
-                let timeInterval = document.get("Date") as! [Timestamp]
-                print(timeInterval)
-                
-//                let dataDate = document.get("Date") ?? [Date()]
-//                self.messageDate += timeInterval.map({NSDate(timeIntervalSince1970:$0 / 1000) as Date
-//                })
+                let timeInterval = document.get("Date") as? [Timestamp] ?? [Timestamp()]
+                self.messageDate = timeInterval.map({$0.dateValue() as Date
+                })
             } else {
                 print("Document does not exist")
             }
+            
+            print("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝")
+            print(self.messages)
             DispatchQueue.main.async {
                 // messageListにメッセージの配列をいれて
                 self.messages = self.getMessages()
@@ -105,15 +106,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         label.textColor = color
         label.text = text
         label.frame = CGRect(x: x, y: y, width: width, height: height)
-        label.layer.opacity = 0
         label.textAlignment = .center
-        UIView.animate(withDuration: 1.0, delay: 0.5, options: [.curveEaseIn], animations: {
-            label.layer.opacity = 1
-        }, completion: nil)
         return label
     }
     func currentSender() -> SenderType {
-        return Sender(senderId: "1234", displayName: "そっしー")
+        return Sender(senderId: "134", displayName: "そっしー")
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -126,6 +123,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
     func getMessages() -> [Message] {
         var messageArray:[Message] = []
         for i in 0..<messageText.count {
+            
             messageArray.append(createMessage(text: messageText[i], date: messageDate[i]))
         }
         return messageArray
@@ -201,6 +199,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
                 messages.append(message)
                 messagesCollectionView.insertSections([messages.count - 1])
                 messageText.append(text)
+                messageInterval.append(Date().timeIntervalSince1970)
                 messageDate.append(Date())
                 fire(message: messageText)
             }

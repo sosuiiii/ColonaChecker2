@@ -87,14 +87,14 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         gradientLayer.endPoint = CGPoint.init(x: 1, y:1)
         uiView.layer.insertSublayer(gradientLayer, at:0)
         
-        if let layout = self.messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
-            layout.setMessageIncomingAvatarSize(.zero)
-            layout.setMessageOutgoingAvatarSize(.zero)
-            layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
-            layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
-            layout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
-            layout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
-        }
+//        if let layout = self.messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+//            layout.setMessageIncomingAvatarSize(.zero)
+//            layout.setMessageOutgoingAvatarSize(.zero)
+//            layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
+//            layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
+//            layout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
+//            layout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)))
+//        }
         
     }
     @objc func backButtonAction(){
@@ -112,6 +112,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
     func currentSender() -> SenderType {
         return Sender(senderId: "134", displayName: "そっしー")
     }
+    func otherSender() -> SenderType {
+        return Sender(senderId: "1234", displayName: "そっしー")
+    }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return messages[indexPath.section]
@@ -128,10 +131,17 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         }
         return messageArray
     }
+    var token = true
     func createMessage(text: String, date: Date) -> Message {
         let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15),
                                                                            .foregroundColor: UIColor.white])
-        return Message(attributedText: attributedText, sender: currentSender() as! Sender, messageId: UUID().uuidString, date: date)
+        token = Bool.random()
+        if token {
+            return Message(attributedText: attributedText, sender: otherSender() as! Sender, messageId: UUID().uuidString, date: date)
+        } else {
+            return Message(attributedText: attributedText, sender: currentSender() as! Sender, messageId: UUID().uuidString, date: date)
+        }
+        
     }
     // メッセージの上に文字を表示
 //    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -158,11 +168,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         return isFromCurrentSender(message: message) ? colors.blueGreen : colors.redOrange
     }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        // message.sender.displayNameで送信者の名前になる
-        let avatar = Avatar(initials: isFromCurrentSender(message: message) ? "自分" : "先生")
-        avatarView.set(avatar: avatar)
+       let avatar: Avatar
+        avatar = Avatar(image: UIImage(named: isFromCurrentSender(message: message) ? "virus2": "virus"))
+       avatarView.set(avatar: avatar)
+
     }
-    
     //MARK: -MessagesLayoutDelegate
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if indexPath.section % 3 == 0 { return 10 }

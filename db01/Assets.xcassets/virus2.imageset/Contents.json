@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "virusのコピー.png",
+      "filename" : "virus2-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "virus2@x2-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "virus2@x3-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
